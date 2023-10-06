@@ -5,7 +5,7 @@ import Room from "./Room";
 
 const Model = () => {
 return (
-    <Canvas orthographic camera={{zoom:100,position:[-30,40,-33]}} gl={{ antialias: false }}>
+    <Canvas orthographic camera={{zoom:100,position:[-30,40,-33]}} gl={{ antialias: false }} shadows>
         <Room/>
     </Canvas>
 

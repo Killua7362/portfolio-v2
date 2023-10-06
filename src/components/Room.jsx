@@ -1,4 +1,4 @@
-import { OrbitControls, OrthographicCamera, useGLTF } from "@react-three/drei";
+import { Box, OrbitControls, OrthographicCamera, PerspectiveCamera, Plane, useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
@@ -63,13 +63,24 @@ const Room = () => {
          
 return (
     <Suspense fallback={null}>
-    <mesh  position={[0.5,-1,1]}>
-        <ambientLight intensity={1}/>
-      <pointLight position={[-3 , 7 ,-3]} intensity={60} distance={100}/>
-        <primitive object={gltf.scene} shadows scale={zoomLevel} ref={room} />
-    </mesh>
+            <gridHelper args={[10]}/>
+            <axesHelper args={[10]}/>
+        <group dispose={null}>
+        <mesh  position={[0.5,-1,1]}>
+            <ambientLight intensity={1}/>
+            <pointLight position={[-3 , 7 ,-3]} intensity={60} distance={100} castShadow/>
+            <primitive object={gltf.scene} shadows scale={zoomLevel} ref={room} castShadow/>
+        </mesh>
+        <mesh position={[0,-0.3,0]} rotation={[THREE.MathUtils.degToRad(90),THREE.MathUtils.degToRad(180),THREE.MathUtils.degToRad(90)]} receiveShadow>
+            <Plane args={[100,100]}>
+                <meshBasicMaterial/>
+            </Plane>
+        </mesh>
+        </group>
+            <OrbitControls/>
       </Suspense>
   );
 }
  
 export default Room;
+
