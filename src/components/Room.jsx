@@ -1,4 +1,4 @@
-import { useGLTF } from "@react-three/drei";
+import { OrbitControls, OrthographicCamera, useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
@@ -7,44 +7,65 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger)
 
-const Room = () => {
+import * as THREE from 'three'
 
+const Room = () => {
   const gltf = useGLTF('/final_room.glb')
   const room= useRef(null)
   const three = useThree()
   const tl = gsap.timeline();
-  const [zoomLevel,setZoomLevele]=useState(0.09)
-
+  const [zoomLevel,setZoomLevele]=useState(0.12)
   useLayoutEffect(()=>{
     new ScrollTrigger({});
     tl.to(three.scene.position,{
-        x:1,
-        y:1,
-        z:1,
+        x:-4,
+        y:-0.5,
+        z:4,
         scrollTrigger:{
             trigger:'.section-2',
             start:'top bottom',
             end:'top top',
             scrub:true,
             immediateRender:false,
+            onUpdate: trigger =>{
+                setZoomLevele(trigger.progress * (0.08-0.12) + 0.12)
+            }
         }
-    }).to(zoomLevel,{
-       scrollTrigger:{
-        trigger:'.section-2',
-        start:'top bottom',
-        end:'top top',
-        scrub:true,
-        immediateRender:false,
-        onUpdate: trigger =>{
-            setZoomLevele(trigger.progress * -0.06 + 0.09)
-        } 
-       }     
-        })
-  },[])
+    }).to(
+        three.scene.position,{
+            x:-12.5,
+            y:-3,
+            z:0,
+            scrollTrigger:{
+                trigger:'.section-3',
+                start:'top bottom',
+                end:'top top',
+                scrub:true,
+                immediateRender:false,
+            }
+        }).to(
+            three.scene.rotation,{
+                x:THREE.MathUtils.degToRad(0),
+                y:THREE.MathUtils.degToRad(-47.5),
+                z:THREE.MathUtils.degToRad(-40),
+                scrollTrigger:{
+                    trigger:'.section-3',
+                    start:'top bottom',
+                    end:'top top',
+                    scrub:true,
+                    immediateRender:false,
+                    onUpdate: trigger =>{
+                        setZoomLevele(trigger.progress * (0.5-0.06) + 0.06)
+                    }
+                }
+            }
+        )},[])
+         
 return (
-      <Suspense fallback={null}>
-    <mesh  position={[-1,-0.8,1]}>
-      <rectAreaLight position={[-1 , 5 ,3]} intensity={2} castShadow/>
+    <Suspense fallback={null}>
+    <mesh  position={[0.5,-1,1]}>
+        <ambientLight intensity={1}/>
+      <pointLight position={[-3 , 7 ,-3]} intensity={60} distance={100}/>
         <primitive object={gltf.scene} shadows scale={zoomLevel} ref={room} />
     </mesh>
       </Suspense>
