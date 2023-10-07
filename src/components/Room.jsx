@@ -1,4 +1,4 @@
-import { Box, OrbitControls, OrthographicCamera, PerspectiveCamera, Plane, useGLTF } from "@react-three/drei";
+import { Box, Circle, OrbitControls, OrthographicCamera, PerspectiveCamera, Plane, useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
@@ -19,16 +19,16 @@ const Room = () => {
     gltf.scene.castShadow = true;
     gltf.receiveShadow = true;
     gltf.scene.receiveShadow= true;
-  const room= useRef(null)
+    const [floorRadius,setFloorRadius] = useState(0.7)
   const three = useThree()
+    console.log(three)
   const tl = gsap.timeline();
-  const [zoomLevel,setZoomLevele]=useState(0.07)
+  const [zoomLevel,setZoomLevele]=useState(0.12)
   useLayoutEffect(()=>{
     new ScrollTrigger({});
     tl.to(three.scene.position,{
-        x:-2,
-        y:-0.5,
-        z:3,
+        x:-3.5,
+        z:3.5,
         scrollTrigger:{
             trigger:'.section-2',
             start:'top bottom',
@@ -36,7 +36,8 @@ const Room = () => {
             scrub:true,
             immediateRender:false,
             onUpdate: trigger =>{
-                setZoomLevele(trigger.progress * (0.07-0.07) + 0.07)
+                setZoomLevele(trigger.progress * (0.10-0.12) + 0.12)
+                setFloorRadius(trigger.progress * (20-0.7) + 0.7)
             }
         }
     }).to(
@@ -51,18 +52,22 @@ const Room = () => {
                 scrub:true,
                 immediateRender:false,
                 onUpdate: trigger =>{
-                    setZoomLevele(trigger.progress * (0.35-0.07) + 0.07)
+                setZoomLevele(trigger.progress * (0.35-0.12) + 0.12)
+                setFloorRadius(trigger.progress * (0-20) + 20)
                 }
             }
         })},[])
          
 return (
     <Suspense fallback={null}>
-        <group dispose={null}>
-            <mesh  position={[-0.2,-0.6,0]}>
-            <primitive object={gltf.scene} shadows scale={zoomLevel} ref={room}/>
-        </mesh>
-        </group>
+            <mesh  position={[-0.6,-0.7,-0.3]} >
+                <primitive object={gltf.scene} shadows scale={zoomLevel}/>
+            </mesh>
+            <mesh position={[-0.5,-0.3,-1]}>
+                <Circle rotation={[THREE.MathUtils.degToRad(-90),THREE.MathUtils.degToRad(0),THREE.MathUtils.degToRad(0)]} args={[floorRadius]} >
+                    <meshBasicMaterial color={'yellow'}/>
+                </Circle>
+            </mesh>
       </Suspense>
   );
 }
