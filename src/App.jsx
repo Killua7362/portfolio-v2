@@ -12,8 +12,6 @@ return(
       Hey, I am Akshay
     </div>
     <div className='text-6xl h-screen section-3 z-50'>
-        <div className='relative z-0 h-screen w-8/12 bg-white m-3 mx-5'>
-        </div>
     </div>
   </div>
 )
