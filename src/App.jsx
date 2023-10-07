@@ -18,7 +18,7 @@ const App = () => {
           {
           opacity:0,
           scrollTrigger:{
-            trigger:'.section-4',
+            trigger:'.section-1',
             start:'top',
             end:window.innerHeight * 0.4,
             scrub:true,
@@ -34,16 +34,16 @@ return(
     <div className='fixed h-screen w-full overflow-hidden'>
       <Model/>
     </div>
-    <div className={`text-6xl h-screen relative z-0 justify-center items-center flex section-4`} ref={welcome}>
+    <div className={`text-6xl h-screen relative z-0 justify-center items-center flex section-1`} ref={welcome}>
         WELCOME
     </div>
-    <div className='text-6xl h-screen section-1 relative z-0 flex'>
+    <div className='text-6xl h-screen section-2 relative z-0 flex'>
         I am Akshay
     </div>
-    <div className='text-6xl h-screen section-2'>
+    <div className='text-6xl h-screen section-3 relative z-0 flex'>
       Hey, I am Akshay
     </div>
-    <div className='text-6xl h-screen section-3 z-50'>
+    <div className='text-6xl h-screen section-4 relative z-0 flex'>
     </div>
   </div>
 )

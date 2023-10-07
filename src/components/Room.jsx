@@ -20,23 +20,48 @@ const Room = () => {
     gltf.receiveShadow = true;
     gltf.scene.receiveShadow= true;
     const [floorRadius,setFloorRadius] = useState(0.7)
-      const three = useThree()
-      const tl = gsap.timeline();
-      const [zoomLevel,setZoomLevele]=useState(0.12)
-    
-      const initBox = useRef(null)
+  const three = useThree()
+  const tl = gsap.timeline();
+  const [zoomLevel,setZoomLevel]=useState(0.12)
+  const [initZoomLevel,setInitZoomLevel]=useState(0.7)
+  const initBox = useRef(null)
+  const room= useRef(null)
       useLayoutEffect(()=>{
-    tl.to(three.scene.position,{
-        x:-3.5,
-        z:3.5,
+        tl.to(
+            three.scene.position,{
+                x:-2,
+                y:1.5,
+                scrollTrigger:{
+                    trigger:'.section-2',
+                    start:'top bottom',
+                    end:'top top',
+                    scrub:true,
+                    immediateRender:false,
+                    onUpdate: trigger =>{
+                        setInitZoomLevel(trigger.progress * (4-0.7) + 0.7)
+                        if(trigger.progress >= 0.85){
+                            initBox.current.visible = false                            
+                            room.current.visible = true
+                        }else{
+                            initBox.current.visible = true
+                            room.current.visible = false
+                        }
+                        three.invalidate()
+                    }
+                }
+            }
+        ).to(three.scene.position,{
+        x:-5,
+        y:-0.3,
+        z:5,
         scrollTrigger:{
-            trigger:'.section-2',
+            trigger:'.section-3',
             start:'top bottom',
             end:'top top',
             scrub:true,
             immediateRender:false,
             onUpdate: trigger =>{
-                setZoomLevele(trigger.progress * (0.10-0.12) + 0.12)
+                setZoomLevel(trigger.progress * (0.10-0.12) + 0.12)
                 setFloorRadius(trigger.progress * (20-0.7) + 0.7)
             }
         }
@@ -46,13 +71,13 @@ const Room = () => {
             y:3,
             z:-2,
             scrollTrigger:{
-                trigger:'.section-3',
+                trigger:'.section-4',
                 start:'top bottom',
                 end:'top top',
                 scrub:true,
                 immediateRender:false,
                 onUpdate: trigger =>{
-                setZoomLevele(trigger.progress * (0.35-0.10) + 0.10)
+                setZoomLevel(trigger.progress * (0.35-0.10) + 0.10)
                 setFloorRadius(trigger.progress * (0-20) + 20)
                 }
             }
@@ -63,16 +88,16 @@ const Room = () => {
 
 return (
     <Suspense fallback={null}>
-            <mesh  position={[1,0.6,-2]} scale={0.7} castShadow receiveShadow ref={initBox}>
+            <mesh  position={[1,0.6,-2]} scale={initZoomLevel} castShadow receiveShadow ref={initBox} visible={true}>
                 <boxGeometry/>
                 <meshBasicMaterial attach="material-0" /> {/*right*/}
-                <meshBasicMaterial attach="material-1" /> {/*left*/}
-                <meshBasicMaterial attach="material-2" /> {/*top*/}
+                <meshBasicMaterial attach="material-1" color={'#FCCAFF'}/> {/*left*/}
+                <meshBasicMaterial attach="material-2" color={'#D3FFD4'}/> {/*top*/}
                 <meshBasicMaterial attach="material-3" /> {/*bottom*/}
                 <meshBasicMaterial attach="material-4" /> {/*front*/}
-                <meshBasicMaterial attach="material-5"  map={envMap}/> {/*back*/}
+                <meshBasicMaterial attach="material-5" color={'#FCCAFF'}/> {/*back*/}
             </mesh>
-            <mesh  position={[-0.6,-0.7,-0.3]} visible={false}>
+            <mesh  position={[0.5,-0.5,-1.1]} visible={false} ref={room}>
                 <primitive object={gltf.scene} shadows scale={zoomLevel}/>
             </mesh>
             <mesh position={[-0.5,-0.3,-1]} visible={false}>
@@ -80,7 +105,6 @@ return (
                     <meshBasicMaterial color={'yellow'}/>
                 </Circle>
             </mesh>
-            <OrbitControls/>
       </Suspense>
   );
 }
