@@ -2,21 +2,22 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Model from './components/Model';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ScrollToPlugin from "gsap/ScrollToPlugin";
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger,ScrollToPlugin)
 
 const App = () => {
   const t2 = gsap.timeline();
   const welcome = useRef(null)
   const root= useRef(null)
+
   const lenis = useLenis(({scroll})=>{
-    console.log('rowkinr')
   })
+
   useEffect(()=>{
-  
     const update = (time)=>{
-      root.current?.raf(time*1000)
+      root.current?.raf(time*800)
     }
 
     gsap.ticker.add(update)
@@ -26,11 +27,36 @@ const App = () => {
     }
   })
   useLayoutEffect(()=>{
-      let ctx = gsap.context(()=>{
-        gsap.fromTo(welcome.current,
-          {
-          opacity:1        
+      let panels = gsap.utils.toArray(".panels"),
+          observer = ScrollTrigger.normalizeScroll(true),
+          scrollTween;
+
+      const goToSection = (i)=>{
+        let scrollTween = gsap.to(window,{
+          scrollTo:{y:i*innerHeight,autoKill:false},
+          onStart:()=>{
+            observer.enable()
           },
+          duration:1,
+          onComplete:()=>scrollTween = null,
+          overwrite:true
+        })
+      }
+    panels.forEach((panel,i)=>{
+      ScrollTrigger.create({
+        trigger:panel,
+        start:'top bottom',
+        end:'+=199%',
+        onToggle:self=>self.isActive && !scrollTween && goToSection(i)
+      })
+    })
+    ScrollTrigger.create({
+      start:0,
+      end:'max',
+      snap:1/(panels.length-1)
+    })
+      let ctx = gsap.context(()=>{
+        gsap.to(welcome.current,
           {
           opacity:0,
           scrollTrigger:{
@@ -52,12 +78,10 @@ return(
     <div className='fixed h-screen w-full'>
       <Model/>
     </div>
-    <div className={`text-6xl h-screen relative z-0 justify-center items-center flex section-1`} ref={welcome}>
+    <div className={`text-6xl h-screen relative z-0 justify-center items-center flex section-1 panels`} ref={welcome}>
         WELCOME
     </div>
-    <div className='text-6xl h-screen section-2 relative z-0 flex flex-col justify-end items-start pb-28 pl-16'>
-    </div>
-    <div className='text-6xl h-screen relative z-0 flex flex-col justify-end items-start pb-28 pl-16'>
+    <div className='text-6xl h-screen relative z-0 flex flex-col justify-end items-start pb-8 pl-16 panels section-2'>
         <div className='relative'>
           <div className='text-start text-gray-800'>
             Akshay Bhat
@@ -67,13 +91,9 @@ return(
           </div>
         </div>
     </div>
-    <div className='text-6xl h-screen section-3 relative z-0 flex'>
+    <div className='text-6xl h-screen section-3 relative z-0 flex panels'>
     </div>
-    <div className='text-6xl h-screen relative z-0 flex'>
-    </div>
-    <div className='text-6xl h-screen w-6/12 section-4 relative z-0 flex bg-white'>
-    </div>
-    <div className='text-6xl h-screen w-6/12 relative z-0 flex bg-white'>
+    <div className='text-6xl h-screen w-6/12 section-4 relative z-0 flex bg-white panels'>
     </div>
   </div>
     </ReactLenis>

@@ -17,7 +17,7 @@ return (
             <AccumulativeShadows frames={100} alphaTest={0.85} opacity={0.75} scale={50} position={[-10, 0, 10]}>
               <RandomizedLight amount={10} radius={4} ambient={0.5} intensity={5} position={[5,5,5]} bias={0.001} />
             </AccumulativeShadows>
-          <EnvironmentImpl preset="city" /> 
+          <EnvironmentImpl preset="city" resolution={256} frames={1} /> 
     </Canvas>
   );
 }
