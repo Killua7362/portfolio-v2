@@ -19,7 +19,7 @@ const Room = () => {
     gltf.scene.castShadow = true;
     gltf.receiveShadow = true;
     gltf.scene.receiveShadow= true;
-    const [floorRadius,setFloorRadius] = useState(0.7)
+    const [floorRadius,setFloorRadius] = useState(0.3)
   const three = useThree()
   const tl = gsap.timeline();
   const [zoomLevel,setZoomLevel]=useState(0.12)
@@ -61,14 +61,14 @@ const Room = () => {
             scrub:true,
             immediateRender:false,
             onUpdate: trigger =>{
-                setZoomLevel(trigger.progress * (0.10-0.12) + 0.12)
-                setFloorRadius(trigger.progress * (20-0.7) + 0.7)
+                setZoomLevel(trigger.progress * (0.107-0.12) + 0.12)
+                setFloorRadius(trigger.progress * (20-0.3) + 0.3)
             }
         }
     }).to(
         three.scene.position,{
-            x:-12,
-            y:3,
+            x:-19,
+            y:4,
             z:-2,
             scrollTrigger:{
                 trigger:'.section-4',
@@ -77,7 +77,7 @@ const Room = () => {
                 scrub:true,
                 immediateRender:false,
                 onUpdate: trigger =>{
-                setZoomLevel(trigger.progress * (0.35-0.10) + 0.10)
+                setZoomLevel(trigger.progress * (0.5-0.10) + 0.10)
                 setFloorRadius(trigger.progress * (0-20) + 20)
                 }
             }
@@ -100,7 +100,7 @@ return (
             <mesh  position={[0.5,-0.5,-1.1]} visible={false} ref={room}>
                 <primitive object={gltf.scene} shadows scale={zoomLevel}/>
             </mesh>
-            <mesh position={[-0.5,-0.3,-1]} visible={false}>
+            <mesh position={[1,0.6,-2]} visible={true}>
                 <Circle rotation={[THREE.MathUtils.degToRad(-90),THREE.MathUtils.degToRad(0),THREE.MathUtils.degToRad(0)]} args={[floorRadius]} >
                     <meshBasicMaterial color={'yellow'}/>
                 </Circle>
