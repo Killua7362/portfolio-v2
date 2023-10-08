@@ -21,13 +21,15 @@ const Room = () => {
     gltf.scene.receiveShadow= true;
     const [floorRadius,setFloorRadius] = useState(0.3)
   const three = useThree()
-  const tl = gsap.timeline();
   const [zoomLevel,setZoomLevel]=useState(0.12)
   const [initZoomLevel,setInitZoomLevel]=useState(0.7)
   const initBox = useRef(null)
   const room= useRef(null)
+  const [ctx] = useState(gsap.context(() => {}, root));
+
       useLayoutEffect(()=>{
-        tl.to(
+        ctx.add(()=>{
+        gsap.to(
             three.scene.position,{
                 x:-2,
                 y:1.5,
@@ -50,7 +52,8 @@ const Room = () => {
                     }
                 }
             }
-        ).to(three.scene.position,{
+        )
+        gsap.to(three.scene.position,{
         x:-5,
         y:-0.3,
         z:5,
@@ -65,7 +68,8 @@ const Room = () => {
                 setFloorRadius(trigger.progress * (20-0.3) + 0.3)
             }
         }
-    }).to(
+    })
+    gsap.to(
         three.scene.position,{
             x:-19,
             y:4,
@@ -77,13 +81,14 @@ const Room = () => {
                 scrub:true,
                 immediateRender:false,
                 onUpdate: trigger =>{
-                setZoomLevel(trigger.progress * (0.5-0.10) + 0.10)
+                setZoomLevel(trigger.progress * (0.5-0.102) + 0.102)
                 setFloorRadius(trigger.progress * (0-20) + 20)
                 }
             }
         })
-        return ()=>tl.revert()
-    },[])
+    return ()=>ctx.revert()
+        })
+    },[initBox,room])
     const envMap = useTexture('imgs/killua.png')
 
 return (

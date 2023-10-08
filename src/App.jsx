@@ -8,54 +8,57 @@ import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 gsap.registerPlugin(ScrollTrigger,ScrollToPlugin)
 
 const App = () => {
-  const t2 = gsap.timeline();
-  const welcome = useRef(null)
-  const root= useRef(null)
+  const root= useRef()
+  const [ctx] = useState(gsap.context(() => {}, root));
+  const welcome = useRef()
 
-  const lenis = useLenis(({scroll})=>{
-  })
-
-  useEffect(()=>{
-    const update = (time)=>{
-      root.current?.raf(time*800)
-    }
-
-    gsap.ticker.add(update)
-
-    return ()=>{
-      gsap.ticker.remove(update)
-    }
-  })
-  useLayoutEffect(()=>{
-      let panels = gsap.utils.toArray(".panels"),
-          observer = ScrollTrigger.normalizeScroll(true),
-          scrollTween;
-
-      const goToSection = (i)=>{
-        let scrollTween = gsap.to(window,{
-          scrollTo:{y:i*innerHeight,autoKill:false},
-          onStart:()=>{
-            observer.enable()
-          },
-          duration:1,
-          onComplete:()=>scrollTween = null,
-          overwrite:true
-        })
+  const scrolling = {
+    enabled: true,
+    events: "scroll,wheel,touchmove,pointermove".split(","),
+    prevent: e => e.preventDefault(),
+    disable() {
+      if (scrolling.enabled) {
+        scrolling.enabled = false;
+        window.addEventListener("scroll", gsap.ticker.tick, {passive: true});
+        scrolling.events.forEach((e, i) => (i ? document : window).addEventListener(e, scrolling.prevent, {passive: false}));
       }
-    panels.forEach((panel,i)=>{
-      ScrollTrigger.create({
-        trigger:panel,
-        start:'top bottom',
-        end:'+=199%',
-        onToggle:self=>self.isActive && !scrollTween && goToSection(i)
+    },
+    enable() {
+      if (!scrolling.enabled) {
+        scrolling.enabled = true;
+        window.removeEventListener("scroll", gsap.ticker.tick);
+        scrolling.events.forEach((e, i) => (i ? document : window).removeEventListener(e, scrolling.prevent));
+      }
+    }
+  };
+
+  const goToSection=(section)=> {
+    if (scrolling.enabled) { // skip if a scroll tween is in progress
+      scrolling.disable();
+      gsap.to(window, {
+        scrollTo: {y: section, autoKill: false},
+        onComplete: scrolling.enable,
+        duration: 1
+      });
+    }
+  }
+  useLayoutEffect(()=>{
+    ctx.add(() => {
+      let panels = gsap.utils.toArray(".section")
+      panels.forEach((panel,i)=>{
+        ScrollTrigger.create({
+          trigger:panel,
+          start:'top bottom-=1',
+          end:'bottom top+=1',
+          onEnter:()=>goToSection(panel),
+          onEnterBack:()=>goToSection(panel)
+        })
       })
-    })
-    ScrollTrigger.create({
-      start:0,
-      end:'max',
-      snap:1/(panels.length-1)
-    })
-      let ctx = gsap.context(()=>{
+        ScrollTrigger.create({
+          start:0,
+          end:'max',
+          snap:1/(panels.length-1)
+        })
         gsap.to(welcome.current,
           {
           opacity:0,
@@ -64,24 +67,21 @@ const App = () => {
             start:'top',
             end:window.innerHeight * 0.4,
             scrub:true,
-            onUpdate:trigger=>{
-            }
           }
         })
-      },welcome)
+      })
     return ()=>ctx.revert()
-  },[welcome])
+  },[])
 
 return(
-    <ReactLenis ref={root} autoRaf={false} root>
-  <div>
+  <div className='section-root overflow-hidden' ref={root}>
     <div className='fixed h-screen w-full'>
       <Model/>
     </div>
-    <div className={`text-6xl h-screen relative z-0 justify-center items-center flex section-1 panels`} ref={welcome}>
+    <div className={`text-6xl h-screen relative z-0 justify-center items-center flex section-1 section `} ref={welcome}>
         WELCOME
     </div>
-    <div className='text-6xl h-screen relative z-0 flex flex-col justify-end items-start pb-8 pl-16 panels section-2'>
+    <div className='text-6xl h-screen relative z-0 flex flex-col justify-end items-start pb-8 pl-16 section-2 section'>
         <div className='relative'>
           <div className='text-start text-gray-800'>
             Akshay Bhat
@@ -91,12 +91,11 @@ return(
           </div>
         </div>
     </div>
-    <div className='text-6xl h-screen section-3 relative z-0 flex panels'>
+    <div className='text-6xl h-screen section-3 relative z-0 flex section'>
     </div>
-    <div className='text-6xl h-screen w-6/12 section-4 relative z-0 flex bg-white panels'>
+    <div className='text-6xl h-screen w-6/12 section-4 relative z-0 flex bg-white section'>
     </div>
   </div>
-    </ReactLenis>
 )
 }
  
