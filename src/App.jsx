@@ -54,11 +54,6 @@ const App = () => {
           onEnterBack:()=>goToSection(panel)
         })
       })
-        ScrollTrigger.create({
-          start:0,
-          end:'max',
-          snap:1/(panels.length-1)
-        })
         gsap.to(welcome.current,
           {
           opacity:0,
