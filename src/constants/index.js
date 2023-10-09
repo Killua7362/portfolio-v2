@@ -3,4 +3,5 @@ const experience = [
         title:'testing'
     }
 ]
-export {experience};
+const aboutMe = 'Testing'
+export {experience,aboutMe};

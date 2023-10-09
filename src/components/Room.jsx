@@ -1,6 +1,6 @@
-import { Box, Circle, OrbitControls, OrthographicCamera, PerspectiveCamera, Plane, useCubeTexture, useGLTF, useTexture } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
-import { Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import {  Circle, useGLTF, } from "@react-three/drei";
+import {  useThree } from "@react-three/fiber";
+import { Suspense, useLayoutEffect, useRef, useState } from 'react';
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -10,7 +10,9 @@ gsap.registerPlugin(ScrollTrigger)
 import * as THREE from 'three'
 
 const Room = () => {
-  const gltf = useGLTF('/final_room.glb')
+    const three = useThree()
+    const gltf = useGLTF('/final_room.glb')
+
     gltf.scene.children.forEach((mesh, i) => {
         mesh.castShadow = true;
         mesh.receiveShadow= true;
@@ -19,13 +21,14 @@ const Room = () => {
     gltf.scene.castShadow = true;
     gltf.receiveShadow = true;
     gltf.scene.receiveShadow= true;
+
+    const [ctx] = useState(gsap.context(() => {}, root));
     const [floorRadius,setFloorRadius] = useState(0.3)
-  const three = useThree()
-  const [zoomLevel,setZoomLevel]=useState(0.12)
-  const [initZoomLevel,setInitZoomLevel]=useState(0.7)
-  const initBox = useRef(null)
-  const room= useRef(null)
-  const [ctx] = useState(gsap.context(() => {}, root));
+    const [zoomLevel,setZoomLevel]=useState(0.12)
+    const [initZoomLevel,setInitZoomLevel]=useState(0.7)
+
+    const initBox = useRef(null)
+    const room= useRef(null)
 
       useLayoutEffect(()=>{
         ctx.add(()=>{
@@ -64,7 +67,7 @@ const Room = () => {
             scrub:true,
             immediateRender:false,
             onUpdate: trigger =>{
-                setZoomLevel(trigger.progress * (0.107-0.12) + 0.12)
+                setZoomLevel(trigger.progress * (0.109-0.12) + 0.12)
                 setFloorRadius(trigger.progress * (20-0.3) + 0.3)
             }
         }
@@ -81,7 +84,7 @@ const Room = () => {
                 scrub:true,
                 immediateRender:false,
                 onUpdate: trigger =>{
-                setZoomLevel(trigger.progress * (0.5-0.102) + 0.102)
+                setZoomLevel(trigger.progress * (0.5-0.109) + 0.109)
                 setFloorRadius(trigger.progress * (0-20) + 20)
                 }
             }
@@ -89,10 +92,9 @@ const Room = () => {
     return ()=>ctx.revert()
         })
     },[initBox,room])
-    const envMap = useTexture('imgs/killua.png')
 
 return (
-    <Suspense fallback={null}>
+            <group dispose={null}>
             <mesh  position={[1,0.6,-2]} scale={initZoomLevel} castShadow receiveShadow ref={initBox} visible={true}>
                 <boxGeometry/>
                 <meshBasicMaterial attach="material-0" /> {/*right*/}
@@ -110,9 +112,9 @@ return (
                     <meshBasicMaterial color={'yellow'}/>
                 </Circle>
             </mesh>
-      </Suspense>
+            </group>
   );
 }
  
 export default Room;
-
+useGLTF.preload('/final_room.glb')

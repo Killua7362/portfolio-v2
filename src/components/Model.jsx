@@ -1,15 +1,15 @@
-import { OrbitControls, OrthographicCamera, RandomizedLight, useAnimations, useGLTF,Environment as EnvironmentImpl, AccumulativeShadows, useTexture } from "@react-three/drei";
-import { Canvas,useThree } from "@react-three/fiber";
-import { Suspense, useCallback, useEffect, useLayoutEffect, useRef } from 'react';
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import {  RandomizedLight,Environment as EnvironmentImpl, AccumulativeShadows, Html } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 
 import Room from "./Room";
+import { Suspense } from "react";
 const Model = () => {
 return (
       <Canvas shadows orthographic camera={{zoom:100, position: [-30, 40, -33] }} border={0}>
       <color attach="background" args={['skyblue']} />
-        <Room/>
+      <Suspense fallback={<Html>Loading...</Html>}>
+          <Room/>
+      </Suspense>
         <directionalLight position={[5,10,5]} intensity={2.5} shadow-mapSize={1024} castShadow />
             <directionalLight position={[-5, 5, 5]} intensity={0.1} shadow-mapSize={128} castShadow />
             <directionalLight position={[-5, 5, -5]} intensity={0.1} shadow-mapSize={128} castShadow />
