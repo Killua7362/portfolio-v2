@@ -7,6 +7,9 @@ import './App.css'
 import { FaInstagram, FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa'
 import { SiMyanimelist, SiGmail } from 'react-icons/si'
 import Lenis from "@studio-freight/lenis";
+import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
+import { experience } from './constants';
 
 gsap.registerPlugin(ScrollTrigger,ScrollToPlugin)
 
@@ -58,7 +61,7 @@ const App = () => {
   }
 
   useLayoutEffect(()=>{
-    
+
     lenis.on('scroll', ScrollTrigger.update);
 
     gsap.ticker.add((time) => {
@@ -190,10 +193,48 @@ return(
               </div>                
           </div>
       </div>
-      <div className='text-6xl h-screen w-6/12 section-4 relative z-0 flex bg-white section'>
-      </div>
+      <div className='text-6xl  w-5/12 section-4 relative z-0 section'>
+        <div className='bg-white mx-5 p-10 h-full py-[20vh] w-full'>
+        </div>
+          <div className='h-full w-full'>
+            <VerticalTimeline animate={false}>
+              {experience.map((exp,i)=>{
+                return <ExperienceCard key={i} experience={exp}/>
+              })}
+            </VerticalTimeline>
+          </div>
+        </div>
     </div>
 )
 }
- 
+const ExperienceCard = ({experience})=>{
+  return(
+    <VerticalTimelineElement
+    contentStyle={{
+      background:'#0685ba',
+      color:'#fff',
+      padding:0,
+      border:0,
+      borderRadius:0,
+    }}
+    contentArrowStyle={{borderRight:"7px solid #232631"}}
+    date="2011 - present"
+    iconStyle={{background:experience.iconBg}}
+    >
+      <div className='p-6'>
+        <h3 className='text-[1.6rem] font-bold text-gray-100'>
+          Machine learning engineer
+        </h3>
+        <p className='pt-0 text-2xl font-semibold text-gray-300'>
+          Unify IVY lmtd
+        </p>
+        <ul className='list-disc pl-8 pt-2 '>
+          {experience.points.map((point,index)=>{
+            return <li className='text-lg tracking-wider'>{point}</li>
+          })}
+        </ul>
+      </div>
+    </VerticalTimelineElement>
+  )
+} 
 export default App;
