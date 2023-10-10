@@ -1,6 +1,6 @@
 const Skills = () => {
     return (
-          <div className='grid grid-cols-10 mt-6 gap-y-4'>
+          <div className='grid grid-cols-10 gap-y-4 '>
               <div className='text-xl col-span-2'>
                 Libraries
               </div>              

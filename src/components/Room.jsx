@@ -103,12 +103,12 @@ return (
                 <meshBasicMaterial attach="material-5" color={'#FCCAFF'}/> {/*back*/}
             </mesh>
             <mesh  position={[0.5,-0.5,-1.1]} visible={false} ref={room}>
-                <ambientLight intensity={0.20}/>
+                <ambientLight intensity={0.40}/>
                 <primitive object={gltf.scene} shadows scale={zoomLevel}/>
             </mesh>
             <mesh position={[1,0.6,-2]} visible={true}>
                 <Circle rotation={[THREE.MathUtils.degToRad(-90),THREE.MathUtils.degToRad(0),THREE.MathUtils.degToRad(0)]} args={[floorRadius]} >
-                    <meshBasicMaterial color={'#40abd6'}/>
+                    <meshBasicMaterial color={'yellow'}/>
                 </Circle>
             </mesh>
             </group>

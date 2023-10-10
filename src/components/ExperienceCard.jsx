@@ -7,7 +7,6 @@ const ExperienceCard = ({experience})=>{
         color:'#fff',
         padding:0,
         border:2,
-        borderRadius:0,
         borderColor:'black',
         borderRadius:'7%',
         outline:'2px solid black'

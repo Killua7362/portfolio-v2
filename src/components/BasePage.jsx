@@ -1,6 +1,6 @@
 import Model from './Model';
 import NavBar from './Navbar';
-import { VerticalTimeline, }  from 'react-vertical-timeline-component';
+import { VerticalTimeline, VerticalTimelineElement, }  from 'react-vertical-timeline-component';
 import { experience } from '../constants';
 import About from './About';
 import ExperienceCard from './ExperienceCard';
@@ -113,21 +113,24 @@ const BasePage = () => {
             </div>
           </div>
       </div>
-      <div className='text-2xl h-full section-3 relative z-0 section w-5/12 bg-white mx-5 p-10 pt-[30vh] pb-[60vh] border-solid border-black border-2'>
+      <div className='text-2xl h-full section-3 relative z-0 section w-7/12 bg-white p-10 pt-[10vh] pb-[60vh] border-solid border-black border-2'>
         <About/>
       </div>
-      <div className='text-6xl w-5/12 section-4 relative z-0 section flex flex-col top-[-20px]'>
-        <div className='bg-white mx-5  h-full py-[20vh] w-full about-me-text text-center border-solid border-black border-2 border-t-0'>
-          Experience
-        </div>
-          <div className='h-full w-full relative top-[-20px]'>
-            <VerticalTimeline animate={false}>
-              {experience.map((exp,i)=>{
-                return <ExperienceCard key={i} experience={exp}/>
-              })}
-            </VerticalTimeline>
+      <div className='section-4 section relative z-0 w-screen backdrop-blur-lg'>
+          <div className='text-6xl w-5/12  flex flex-col'>
+            <div className='bg-white mx-5  h-full py-[20vh] w-full about-me-text text-center border-solid border-black border-2 border-t-0'>
+              Experience
+            </div>
+              <div className='h-full w-full relative top-[-20px]'>
+                <VerticalTimeline animate={false}>
+                  {experience.map((exp,i)=>{
+                    return <ExperienceCard key={i} experience={exp}/>
+                  })}
+
+                </VerticalTimeline>
+              </div>
+            </div>
           </div>
-        </div>
         </div>
       );
 }
