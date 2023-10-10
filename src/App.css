@@ -1,8 +1,16 @@
+.navbar{
+  transition: opacity 0.5s;
+}
+.navbar:hover{
+  opacity: 100;
+}
+
+
 .skills-container{
     position: relative;
     text-transform: uppercase;
-    text-shadow: -15px 5px 20px black;
-    color: white;
+    text-shadow: -15px 5px 20px #5FB9D2;
+    color: black;
     letter-spacing: -0.05em;
     font-family: 'Anton', Arial, sans-serif;
     user-select: none;
@@ -20,8 +28,8 @@
     margin: 11px 0 17px 0;
     font-size: 80px;
     line-height: 80px;
-    color: #f1ebe5;
-    text-shadow: 0 13.36px 8.896px #727136,0 -2px 1px #fff;
+    color: black;
+    text-shadow: 0 13.36px 8.896px #5FB9D2,0 -2px 1px #fff;
     letter-spacing: -4px;
 }
 

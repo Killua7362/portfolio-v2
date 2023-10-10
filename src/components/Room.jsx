@@ -1,7 +1,6 @@
 import {  Circle, useGLTF, } from "@react-three/drei";
 import {  useThree } from "@react-three/fiber";
-import { Suspense, useLayoutEffect, useRef, useState } from 'react';
-
+import { useLayoutEffect, useRef, useState } from 'react';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -21,7 +20,6 @@ const Room = () => {
     gltf.scene.castShadow = true;
     gltf.receiveShadow = true;
     gltf.scene.receiveShadow= true;
-
     const [ctx] = useState(gsap.context(() => {}, root));
     const [floorRadius,setFloorRadius] = useState(0.3)
     const [zoomLevel,setZoomLevel]=useState(0.12)
@@ -105,11 +103,12 @@ return (
                 <meshBasicMaterial attach="material-5" color={'#FCCAFF'}/> {/*back*/}
             </mesh>
             <mesh  position={[0.5,-0.5,-1.1]} visible={false} ref={room}>
+                <ambientLight intensity={0.20}/>
                 <primitive object={gltf.scene} shadows scale={zoomLevel}/>
             </mesh>
             <mesh position={[1,0.6,-2]} visible={true}>
                 <Circle rotation={[THREE.MathUtils.degToRad(-90),THREE.MathUtils.degToRad(0),THREE.MathUtils.degToRad(0)]} args={[floorRadius]} >
-                    <meshBasicMaterial color={'yellow'}/>
+                    <meshBasicMaterial color={'#40abd6'}/>
                 </Circle>
             </mesh>
             </group>
