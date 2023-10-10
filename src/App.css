@@ -52,3 +52,8 @@ html.lenis {
   .lenis.lenis-scrolling iframe {
     pointer-events: none;
   }
+
+  .item-1:hover,
+  .item-1:active{
+    color:green;
+}

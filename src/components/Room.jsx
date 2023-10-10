@@ -1,4 +1,4 @@
-import {  Circle, useGLTF, } from "@react-three/drei";
+import {  Circle, OrbitControls, PresentationControls, useGLTF, } from "@react-three/drei";
 import {  useThree } from "@react-three/fiber";
 import { useLayoutEffect, useRef, useState } from 'react';
 import gsap from "gsap";
@@ -7,10 +7,11 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger)
 
 import * as THREE from 'three'
+import Env from "./Enironment";
 
 const Room = () => {
     const three = useThree()
-    const gltf = useGLTF('/final_room.glb')
+    const gltf = useGLTF('/untitled.glb')
 
     gltf.scene.children.forEach((mesh, i) => {
         mesh.castShadow = true;
@@ -24,7 +25,6 @@ const Room = () => {
     const [floorRadius,setFloorRadius] = useState(0.3)
     const [zoomLevel,setZoomLevel]=useState(0.12)
     const [initZoomLevel,setInitZoomLevel]=useState(0.7)
-
     const initBox = useRef(null)
     const room= useRef(null)
 
@@ -69,29 +69,18 @@ const Room = () => {
                 setFloorRadius(trigger.progress * (20-0.3) + 0.3)
             }
         }
-    })
-    gsap.to(
-        three.scene.position,{
-            x:-19,
-            y:4,
-            z:-2,
-            scrollTrigger:{
-                trigger:'.section-4',
-                start:'top bottom',
-                end:'top top',
-                scrub:true,
-                immediateRender:false,
-                onUpdate: trigger =>{
-                setZoomLevel(trigger.progress * (0.5-0.109) + 0.109)
-                setFloorRadius(trigger.progress * (0-20) + 20)
-                }
-            }
+    }
+    )
         })
     return ()=>ctx.revert()
-        })
+
     },[initBox,room])
 
 return (
+            <PresentationControls
+            snap={true}
+            global={true}
+            >
             <group dispose={null}>
             <mesh  position={[1,0.6,-2]} scale={initZoomLevel} castShadow receiveShadow ref={initBox} visible={true}>
                 <boxGeometry/>
@@ -103,8 +92,9 @@ return (
                 <meshBasicMaterial attach="material-5" color={'#FCCAFF'}/> {/*back*/}
             </mesh>
             <mesh  position={[0.5,-0.5,-1.1]} visible={false} ref={room}>
-                <ambientLight intensity={0.40}/>
                 <primitive object={gltf.scene} shadows scale={zoomLevel}/>
+                  <ambientLight intensity={2}/>
+                  <directionalLight intensity={6} position={[1,2,4]}/>
             </mesh>
             <mesh position={[1,0.6,-2]} visible={true}>
                 <Circle rotation={[THREE.MathUtils.degToRad(-90),THREE.MathUtils.degToRad(0),THREE.MathUtils.degToRad(0)]} args={[floorRadius]} >
@@ -112,8 +102,9 @@ return (
                 </Circle>
             </mesh>
             </group>
+            </PresentationControls>
   );
 }
  
 export default Room;
-useGLTF.preload('/final_room.glb')
+useGLTF.preload('/untitled.glb')

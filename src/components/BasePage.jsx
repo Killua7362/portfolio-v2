@@ -1,14 +1,14 @@
 import Model from './Model';
 import NavBar from './Navbar';
-import { VerticalTimeline, VerticalTimelineElement, }  from 'react-vertical-timeline-component';
-import { experience } from '../constants';
 import About from './About';
-import ExperienceCard from './ExperienceCard';
 import Lenis from "@studio-freight/lenis";
 import { useLayoutEffect, useRef, useState } from 'react';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
+import Experience from './Experience';
+import Progress from './Progress/ProgressBar';
+import { Context } from './Progress/context';
 
 gsap.registerPlugin(ScrollTrigger,ScrollToPlugin)
 
@@ -18,6 +18,7 @@ const BasePage = () => {
   const root= useRef()
   const [ctx] = useState(gsap.context(() => {}, root));
   const [debug,setDebug]=useState(false)
+  const [progress,setProgress]= useState(0)
   
   const scrolling = {
     enabled: true,
@@ -60,7 +61,6 @@ const BasePage = () => {
 
   
   useLayoutEffect(()=>{
-
     lenis.on('scroll', ScrollTrigger.update);
 
     gsap.ticker.add((time) => {
@@ -81,6 +81,16 @@ const BasePage = () => {
           onEnterBack:()=>goToSection(panel)
         })
       })
+      ScrollTrigger.create({
+            trigger:'.section-3',
+            start:'top bottom',
+            end:'bottom-=4%',
+            scrub:true,
+            immediateRender:false,
+            onUpdate:trigger=>{
+              setProgress(trigger.progress *137.25)
+            }
+      })
         gsap.to(welcome.current,
           {
           opacity:0,
@@ -95,7 +105,7 @@ const BasePage = () => {
     return ()=>ctx.revert()
   },[])
     return (
-    <div className='h-full w-full' ref={root}>
+    <div className='h-full w-full' ref={root} data-lenis-prevent>
       <NavBar/>
       <div className='fixed h-screen w-full'>
         <Model/>
@@ -113,24 +123,15 @@ const BasePage = () => {
             </div>
           </div>
       </div>
-      <div className='text-2xl h-full section-3 relative z-0 section w-7/12 bg-white p-10 pt-[10vh] pb-[60vh] border-solid border-black border-2'>
+      <div className='text-2xl h-full section-3 relative z-0 section w-7/12 '>
+        <Context.Provider  value={progress}>
+          <Progress/>
+        </Context.Provider>
+      <div className='bg-white w-full h-full  p-10 pt-[10vh] pb-[60vh] border-solid border-black border-2 flex flex-col'>
         <About/>
+        <Experience/>
       </div>
-      <div className='section-4 section relative z-0 w-screen backdrop-blur-lg'>
-          <div className='text-6xl w-5/12  flex flex-col'>
-            <div className='bg-white mx-5  h-full py-[20vh] w-full about-me-text text-center border-solid border-black border-2 border-t-0'>
-              Experience
-            </div>
-              <div className='h-full w-full relative top-[-20px]'>
-                <VerticalTimeline animate={false}>
-                  {experience.map((exp,i)=>{
-                    return <ExperienceCard key={i} experience={exp}/>
-                  })}
-
-                </VerticalTimeline>
-              </div>
-            </div>
-          </div>
+      </div>
         </div>
       );
 }

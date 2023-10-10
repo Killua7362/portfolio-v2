@@ -8,16 +8,17 @@ const ExperienceCard = ({experience})=>{
         padding:0,
         border:2,
         borderColor:'black',
-        borderRadius:'7%',
+        borderRadius:0,
         outline:'2px solid black'
       }}
       contentArrowStyle={{borderRight:"7px solid black"}}
-      date="2011 - present"
-      dateClassName='mx-4 text-black'
-      iconStyle={{background:experience.iconBg}}
+      iconStyle={{background:experience.iconBg,outline:'2px double black'}}
       >
-        <div className='p-6 '>
-          <h3 className='text-[1.6rem] font-bold text-gray-100'>
+        <div className='py-4 px-6 flex flex-col'>
+          <div className='text-black text-base pb-4'>
+            {experience.date}
+          </div>
+          <h3 className='text-[2.5rem] font-bold text-gray-100'>
             Machine learning engineer
           </h3>
           <p className='pt-0 text-2xl font-semibold text-gray-300'>

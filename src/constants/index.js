@@ -23,5 +23,31 @@ const experience = [
     }
 
 ]
+
+const skills={
+    'Front-End':[
+        'Intellij Idea',
+        'test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+        'test1','test2',
+],
+    'technolo':['test2']
+}
 const aboutMe = 'Testing'
-export {experience,aboutMe};
+export {experience,aboutMe,skills};
