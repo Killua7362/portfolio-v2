@@ -4,12 +4,12 @@ import 'react-vertical-timeline-component/style.min.css';
 import ExperienceCard from "./ExperienceCard";
 const Experience = () => {
     return (
-        <div className=" mt-96 w-10/12 mx-auto">
-            <div className="about-me-text text-black text-4xl relative z-20">
+        <div className=" mt-96 w-full lg:w-10/12 mx-auto">
+            <div className="text-4xl pb-6 border-solid border-b-[1px] text-text border-text/50 pt-8 relative z-20 ">
                 Experience
             </div>
             <div>
-            <VerticalTimeline animate={false} className="top-[-15px] relative z-10" layout="1-column-left" lineColor="black">
+            <VerticalTimeline animate={false} className=" ml-[-10px] lg:w-9/12 relative z-10 top-4" layout="1-column-left" lineColor="#e4f3fb">
                   {experience.map((exp,i)=>{
                     return <ExperienceCard key={i} experience={exp}/>
                   })}

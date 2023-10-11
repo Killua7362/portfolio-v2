@@ -28,30 +28,11 @@
     margin: 11px 0 17px 0;
     font-size: 80px;
     line-height: 80px;
-    color: black;
-    text-shadow: 0 13.36px 8.896px #5FB9D2,0 -2px 1px #fff;
+    color: #e4f3fb;
+    /* text-shadow: 0 13.36px 8.896px #1A191A,0 -2px 1px black; */
     letter-spacing: 2px;
 }
 
-html.lenis {
-    height: auto;
-  }
-  
-  .lenis.lenis-smooth {
-    scroll-behavior: auto;
-  }
-  
-  .lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-  }
-  
-  .lenis.lenis-stopped {
-    overflow: hidden;
-  }
-  
-  .lenis.lenis-scrolling iframe {
-    pointer-events: none;
-  }
 
   .item-1:hover,
   .item-1:active{
