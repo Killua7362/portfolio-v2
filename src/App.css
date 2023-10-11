@@ -1,3 +1,19 @@
+.all-project-class-11{
+  transition:transform .3s ease-out;
+}
+
+.all-project-class-10:hover > .all-project-class-11{
+  transform:translate(-4px,0)
+}
+
+.all-project-class-01{
+  transition:transform .3s ease-out;
+}
+
+.all-project-class-00:hover > .all-project-class-01{
+  transform:translate(4px,0)
+}
+
 .skills-container{
     position: relative;
     text-transform: uppercase;
@@ -25,8 +41,3 @@
     letter-spacing: 2px;
 }
 
-
-  .item-1:hover,
-  .item-1:active{
-    color:green;
-}

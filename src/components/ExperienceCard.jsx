@@ -8,7 +8,7 @@ const ExperienceCard = ({experience})=>{
         border:2,
         borderColor:'black',
       }}
-      contentArrowStyle={{borderRight:"7px solid black"}}
+      contentArrowStyle={{borderRight:"7px solid white"}}
       iconStyle={{background:experience.iconBg,outline:'2px double black'}}
       >
         <div className='py-4 px-6 flex flex-col text-text'>

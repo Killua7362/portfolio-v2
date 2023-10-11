@@ -64,22 +64,22 @@ const Room = () => {
         )
         if(window.innerWidth<1024){
         gsap.to(three.scene.position,{
-        x:window.innerHeight>window.innerWidth?window.innerHeight*0.0026:window.innerWidth*0.005,
-        y:window.innerHeight>window.innerWidth?-window.innerHeight*0.004:window.innerWidth*0.000,
-        z:5,
-        scrollTrigger:{
-            trigger:'.section-3',
-            start:'top bottom',
-            end:'top top',
-            scrub:true,
-            immediateRender:false,
-            onUpdate: trigger =>{
-                setFloorRadius(trigger.progress * (20-0.3) + 0.3)
-                three.invalidate()
-            }
+            x:window.innerHeight>window.innerWidth?window.innerHeight*0.0020:window.innerWidth*0.005,
+            y:window.innerHeight>window.innerWidth?-window.innerHeight*0.004:window.innerWidth*0.000,
+            z:5,
+            scrollTrigger:{
+                trigger:'.section-3',
+                start:'top bottom',
+                end:'top top',
+                scrub:true,
+                immediateRender:false,
+                onUpdate: trigger =>{
+                    setFloorRadius(trigger.progress * (20-0.3) + 0.3)
+                    three.invalidate()
+                }
         }
-    }
-    )
+        }
+        )
         }
         else{
             gsap.to(three.scene.position,{

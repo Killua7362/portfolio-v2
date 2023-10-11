@@ -22,8 +22,10 @@ const Skills = () => {
 
         {skills[active].map(function(name,index){
           return(
-        <div className=" w-full h-11 flex justify-center items-center rounded-md data-lenis-prevent p-2 text-xs md:text-base lg:text-lg bg-primary/70">
-          {name}
+        <div className=" w-full h-11 flex justify-center items-center rounded-md data-lenis-prevent p-2  bg-primary/70 whitespace-nowrap ">
+              <div className="text-xs md:text-[1.9vmin]">
+                {name}
+              </div>
         </div>
           )
         })}

@@ -24,12 +24,13 @@ const experience = [
 ]
 const ProjectsData = [
     {
-        name:'Project Name',
-        description:'Project description',
-        img_src:'project.webp',
-        github_link:'',
-        tech_stack:['stack 1','stack 2']
-    }
+        name:'My Portfolio',
+        description:'My personal portfolio website',
+        img_src:'portfolio.png',
+        github_link:'https://github.com/Killua7362/portfolio-v2/',
+        tech_stack:['ReactJS','Three JS','TailwindCss','GSAP','Lenis'],
+        live:''
+    },
 ]
 
 const skills={

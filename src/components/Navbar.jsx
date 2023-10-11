@@ -4,7 +4,7 @@ const NavBar = () => {
   const [isHovered,setIsHovered] = useState(false)
   const [imgHovered,setImgHovered] = useState('navbar/nothovered.png')
     return ( 
-        <div className='fixed w-full h-full z-20 p-4'>
+        <div className='fixed w-full z-10 p-4'>
           <div className='w-full h-full flex flex-col items-end'>
                 <img src={imgHovered}
                  onMouseLeave={(e)=>{

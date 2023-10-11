@@ -111,7 +111,7 @@ const BasePage = () => {
     return () => ctx.revert();
   }, []);
   return (
-    <div className="h-full w-full overflow-x-hidden" ref={root}>
+    <div className="h-full w-full" ref={root}>
       <NavBar />
       <div className="fixed h-screen w-full">
         <Model />
