@@ -1,5 +1,6 @@
 import { FaGithub } from "react-icons/fa";
 import ProjectCard from "./ProjectsCard";
+import { ProjectsData } from "../constants";
 
 const Projects = () => {
     return (
@@ -8,10 +9,11 @@ const Projects = () => {
                 Projects
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-4 pt-8">
-                <ProjectCard/>
-                <ProjectCard/>
-                <ProjectCard/>
-                <ProjectCard/>
+                {ProjectsData.map(function (item,i){
+                    return(
+                        <ProjectCard key={i} ProjectData={item}/>
+                    )
+                })}
             </div>
         </div>
       );

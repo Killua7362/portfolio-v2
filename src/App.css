@@ -1,11 +1,3 @@
-.navbar{
-  transition: opacity 0.5s;
-}
-.navbar:hover{
-  opacity: 100;
-}
-
-
 .skills-container{
     position: relative;
     text-transform: uppercase;

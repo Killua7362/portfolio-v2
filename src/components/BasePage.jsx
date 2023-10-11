@@ -18,7 +18,7 @@ const BasePage = () => {
   const welcome = useRef();
   const root = useRef();
   const [ctx] = useState(gsap.context(() => {}, root));
-  const [debug, setDebug] = useState(false);
+  const [debug, setDebug] = useState(true);
   const [progress, setProgress] = useState(0);
 
   const scrolling = {

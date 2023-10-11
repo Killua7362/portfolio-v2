@@ -21,7 +21,15 @@ const experience = [
             'point 2'
         ]
     }
-
+]
+const ProjectsData = [
+    {
+        name:'Project Name',
+        description:'Project description',
+        img_src:'project.webp',
+        github_link:'',
+        tech_stack:['stack 1','stack 2']
+    }
 ]
 
 const skills={
@@ -33,4 +41,4 @@ const skills={
     'technolo':['test2']
 }
 const aboutMe = 'Testing'
-export {experience,aboutMe,skills};
+export {experience,aboutMe,skills,ProjectsData};
