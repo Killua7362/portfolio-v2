@@ -1,8 +1,17 @@
 import { FaGithub, FaLongArrowAltRight } from "react-icons/fa";
-
+import {motion} from 'framer-motion'
 const ProjectCard= ({ProjectData}) => {
     return (
-            <div className="relative text-base p-4 bg-primary px-8 rounded-xl">
+        <motion.div className="relative text-base p-4 bg-primary px-8 rounded-xl"
+          initial='hidden'
+          whileInView='visible'
+          viewport={{once:false}}
+          transition={{duration:0.3,delay:0.1}}
+          variants={{
+            visible:{opacity:1,y:0},
+            hidden:{opacity:0,y:100}
+          }}
+            >
                 <div className="absoulte w-full mb-2 lg:mb-0">
                 <div className="text-lg font-bold flex justify-start items-center gap-x-1">
                     <div>
@@ -33,7 +42,7 @@ const ProjectCard= ({ProjectData}) => {
                     </div>
                 </div>
                 </div>
-            </div>
+            </motion.div>
       );
 }
  

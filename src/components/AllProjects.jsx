@@ -6,7 +6,7 @@ const ProjectPage = () => {
     return (
         <div className="h-screen w-screen bg-background text-text">
             <NavBar/>
-            <div className="w-6/12 h-full mx-auto relative z-20">
+            <div className="w-6/12 h-full mx-auto relative z-30">
                 <Link to={-1}>
                 <div className="flex gap-x-2 text-text items-center pt-10 all-project-class-10" onMouseEnter={(e)=>{
                 }}>

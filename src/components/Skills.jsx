@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { skills } from "../constants";
+import {motion} from 'framer-motion'
 
 const Skills = () => {
     const[active,setActive] = useState(Object.keys(skills)[0])
@@ -7,7 +8,16 @@ const Skills = () => {
       setActive(event.target.id)
     }
     return (
-      <div className="absolute w-full h-5/6  flex pt-4">
+      <motion.div className="absolute w-full h-5/6  flex pt-3"
+          initial='hidden'
+          whileInView='visible'
+          viewport={{once:false}}
+          transition={{duration:0.6,delay:0.5}}
+          variants={{
+            visible:{opacity:1,y:0},
+            hidden:{opacity:0,y:50}
+          }}
+      >
         <div className="w-3/12  text-text mr-2 grid grid-cols-1 auto-rows-min lg:p-6 py-6 gap-4 text-xs md:text-base lg:text-lg">
           {
             Object.keys(skills).map(function(name,index){
@@ -30,7 +40,7 @@ const Skills = () => {
           )
         })}
         </div>
-      </div>
+      </motion.div>
       );
 }
  
