@@ -2,7 +2,7 @@ import { FaGithub, FaLongArrowAltRight } from "react-icons/fa";
 
 const ProjectCard= ({ProjectData}) => {
     return (
-            <div className="relative text-base p-4 bg-primary/60 px-8 rounded-xl">
+            <div className="relative text-base p-4 bg-primary px-8 rounded-xl">
                 <div className="absoulte w-full mb-2 lg:mb-0">
                 <div className="text-lg font-bold flex justify-start items-center gap-x-1">
                     <div>

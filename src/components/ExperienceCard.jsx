@@ -3,25 +3,30 @@ const ExperienceCard = ({experience})=>{
     return(
       <VerticalTimelineElement
       contentStyle={{
-        background:'#0b0c0d',
+        background:'#15181a',
         padding:0,
         border:2,
         borderColor:'black',
       }}
       contentArrowStyle={{borderRight:"7px solid white"}}
-      iconStyle={{background:experience.iconBg,outline:'2px double black'}}
+      iconStyle={{background:'white',outline:`3px solid ${experience.icon_outline}`}}
+      icon={
+        <div className='w-100 h-100 object-fill'>
+          <img src={experience.img_src} className='rounded-full p-1'/>
+        </div>
+    }
       >
         <div className='py-4 px-6 flex flex-col text-text'>
           <div className=' text-base pb-1 text-text/60'>
             {experience.date}
           </div>
-          <h3 className='text-[2.0rem] lg:text-[2.5rem] font-bold mr-8 lg:mr-0'>
-            Machine learning engineer
+          <h3 className='text-[1.7rem] lg:text-[2.3rem] font-bold mr-8 lg:mr-0'>
+            {experience.title}
           </h3>
-          <div className='text-lg pt-2 text-[#7872B8]'>
-            Unify ivy
+          <div className={ `text-xl pt-3 text-${experience.company_color}` }>
+            {experience.company_name}
           </div>
-          <ul className='list-disc pl-8 pt-2 '>
+          <ul className='list-disc pl-8 pt-3 '>
             {experience.points.map((point,index)=>{
               return <li className='text-lg tracking-wider'>{point}</li>
             })}

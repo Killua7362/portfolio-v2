@@ -7,20 +7,24 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
 import Experience from "./Experience";
-import Progress from "./Progress/ProgressBar";
-import { Context } from "./Progress/context";
 import Projects from "./Projects";
+import {motion,useScroll,useSpring} from 'framer-motion'
+import { fadeIn } from "../utils";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const BasePage = () => {
-  const skillLen = 2;
   const welcome = useRef();
   const root = useRef();
   const [ctx] = useState(gsap.context(() => {}, root));
   const [debug, setDebug] = useState(false);
-  const [progress, setProgress] = useState(0);
-
+  const {scrollYProgress} = useScroll()
+  const scaleX =useSpring(scrollYProgress,{
+    stiffness:100,
+    damping:30,
+    restDelta:0.001
+  })
+  
   const scrolling = {
     enabled: true,
     events: "scroll,wheel,touchmove,pointermove".split(","),
@@ -49,6 +53,7 @@ const BasePage = () => {
 
   const lenis = new Lenis({
     smoothWheel: true,
+    smoothTouch: false,
   });
 
   const goToSection = (section) => {
@@ -58,7 +63,7 @@ const BasePage = () => {
       scrolling.disable();
       gsap.to(
         window, {
-        duration:1.2,
+        duration:1,
         scrollTo: { y: section, autoKill: false},
         onComplete: () => {
           scrolling.enable();
@@ -74,7 +79,6 @@ const BasePage = () => {
         lenis.raf(time * 1000);
       });
       
-      gsap.ticker.lagSmoothing(0);
     if (debug) return;
     ctx.add(() => {
   
@@ -88,58 +92,43 @@ const BasePage = () => {
           onEnterBack: () => goToSection(panel),
         });
       });
-      ScrollTrigger.create({
-        trigger: ".section-3",
-        start: "top bottom",
-        end: "bottom-=4%",
-        scrub: true,
-        immediateRender: false,
-        onUpdate: (trigger) => {
-          setProgress(trigger.progress * 100);
-        },
-      });
-      gsap.to(welcome.current, {
-        opacity: 0,
-        scrollTrigger: {
-          trigger: ".section-1",
-          start: "top",
-          end: window.innerHeight * 0.4,
-          scrub: true,
-        },
-      });
     });
     return () => ctx.revert();
   }, []);
   return (
     <div className="h-full w-full" ref={root}>
       <NavBar />
-      <div className="fixed h-screen w-full">
+      <div className="fixed h-screen w-full z-10">
         <Model />
       </div>
+        <motion.div
+          initial={{ y: -200, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -200, opacity: 0 }}
+          transition={{ duration: 1,type:'spring',bounce:0.3}}>
       <div
-        className={`text-4xl h-screen relative z-0 justify-center items-center flex section-1 section pt-4 pl-8 text-text`}
+        className={`text-6xl z-0 h-screen relative justify-center items-center flex section-1 section pt-4 pl-8 text-text welcome-text`}
         ref={welcome}
       >
-        WELCOME
+          WELCOME
       </div>
-      <div className="text-4xl lg:text-6xl h-screen relative z-0 flex flex-col justify-end items-start pb-24 md:pb-4 pl-4 lg:pb-8 lg:pl-16 section-2 section">
+        </motion.div>
+      <div className="text-2xl lg:text-6xl h-screen relative z-0 flex flex-col justify-end items-start pb-24 md:pb-4 pl-4 lg:pb-8 lg:pl-16 section-2 section">
         <div className="relative">
-          <div className="text-start text-text">Akshay Bhat</div>
-          <div className="text-base lg:text-xl text-text/80 pt-1">
+          <div className="text-start text-text name-text">Akshay Bhat</div>
+          <div className="text-base lg:text-xl text-text/60 pt-1">
             Full Stack Engineer | Machine Learning Engineer
           </div>
         </div>
       </div>
-      <div className="text-2xl h-full relative z-0 section w-7/12 section-3 ">
+      <div className="text-2xl h-full relative z-20 section w-7/12 section-3 ">
         <div className="relative h-screen lg:hidden"/>
-          <Context.Provider value={progress}>
-            <Progress />
-          </Context.Provider>
-        <div className="bg-background w-screen lg:w-full h-full  p-10 pt-[10vh] pb-[60vh] border-solid border-black border-2 flex flex-col">
-          <About />
-          <Experience />
-          <Projects/>
-        </div>
+        <motion.div className="sticky w-full top-0 z-20 h-1 bg-[#7872B8] origin-[0%]" style={{scaleX:scaleX}}/>
+          <div className="bg-background w-screen lg:w-full h-full  p-10 pt-[10vh] pb-[60vh] border-solid border-black border-2 flex flex-col">
+            <About />
+            <Experience />
+            <Projects/>
+          </div>
       </div>
     </div>
   );

@@ -1,26 +1,36 @@
 const experience = [
     {
-        title:'Title',
-        company_name:'Company Name',
-        icon:'',
-        iconBg:'#ffffff',
+        title:'Machine Learning Volunteer',
+        company_name:'Unify Ivy',
+        company_color:'green-400',
+        icon_outline:'green',
+        img_src:'experience/ivy.png',
         date:'March 2020 - April 2021',
         points:[
             'point 1',
-            'point 2'
+            'point 2',
+            'point 1',
+            'point 1',
+            'point 2',
+            'point 2',
         ]
     },
     {
-        title:'Title',
-        company_name:'Company Name',
-        icon:'',
-        iconBg:'#ffffff',
+        title:'Machine Learning Research Intern',
+        company_name:'National Institute of Technology Karnataka',
+        company_color:'blue-800',
+        icon_outline:'#0275D8',
+        img_src:'experience/nitk.jpeg',
         date:'March 2020 - April 2021',
         points:[
             'point 1',
-            'point 2'
+            'point 2',
+            'point 1',
+            'point 1',
+            'point 2',
+            'point 2',
         ]
-    }
+    },
 ]
 const ProjectsData = [
     {

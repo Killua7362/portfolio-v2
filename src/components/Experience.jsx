@@ -9,7 +9,7 @@ const Experience = () => {
                 Experience
             </div>
             <div>
-            <VerticalTimeline animate={false} className=" ml-[-10px] lg:w-9/12 relative z-10 top-4" layout="1-column-left" lineColor="#e4f3fb">
+            <VerticalTimeline animate={false} className=" ml-[-10px] lg:w-10/12 relative z-10 top-4" layout="1-column-left" lineColor="#e4f3fb">
                   {experience.map((exp,i)=>{
                     return <ExperienceCard key={i} experience={exp}/>
                   })}
