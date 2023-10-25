@@ -5,14 +5,11 @@ const experience = [
         company_color:'green-400',
         icon_outline:'green',
         img_src:'experience/ivy.png',
-        date:'March 2020 - April 2021',
+        date:'Aug 2023 - Sep 2023',
         points:[
-            'point 1',
-            'point 2',
-            'point 1',
-            'point 1',
-            'point 2',
-            'point 2',
+            'Implemented Audio Spectrogram transformer which transforms audio into spectrogram and runs image classification using transformer architecture',
+            'Implemented torch mobile support for Ivy\'s autotuner',
+            'Created a keyword arguments expander which let\'s user supply variable number of keyword arguments to torch script'
         ]
     },
     {
@@ -21,14 +18,10 @@ const experience = [
         company_color:'blue-800',
         icon_outline:'#0275D8',
         img_src:'experience/nitk.jpeg',
-        date:'March 2020 - April 2021',
+        date:'May 2022 - Aug 2022',
         points:[
-            'point 1',
-            'point 2',
-            'point 1',
-            'point 1',
-            'point 2',
-            'point 2',
+            'Interned at The Healthcare Analytics and Language Engineering lab, where I implemented a domain-specific pre-trained language model for classifying self-reporting tweets as potential COVID-19 cases',
+            'Conducted experiments with various Huggingface transformer models on a dataset comprising over 18,000 tweets, addressing data imbalance through oversampling and augmentation techniques.'
         ]
     },
 ]
@@ -44,12 +37,22 @@ const ProjectsData = [
 ]
 
 const skills={
+    'Languages':['Javascript','Python','Typescript','C++','C'],
+    'Libraries':['Pytorch','Tensorflow','Jax','Scikit-Learn','Pandas','Numpy','Matplotlib'],
     'Front-End':[
-        'Intellij Idea',
-        'test2',
-        'test1','test2',
+        'HTML',
+        'CSS',
+        'TAILWIND CSS',
+        'React.Js',
+        'Redux',
+        'Recoil',
+        'Next.js',
+        'Vite'
 ],
-    'technolo':['test2']
+    'Backend':['Node.JS','Express','Flask'],
+    'Database':['MySQL','MongooDB','FireBase'],
+    'Testing':['Jest'],
+    'Tools':['Git','Linux','Vim']
 }
 const aboutMe = 'Testing'
 export {experience,aboutMe,skills,ProjectsData};

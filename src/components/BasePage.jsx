@@ -17,7 +17,7 @@ const BasePage = () => {
   const welcome = useRef();
   const root = useRef();
   const [ctx] = useState(gsap.context(() => {}, root));
-  const [debug, setDebug] = useState(false);
+  const [debug, setDebug] = useState(true);
   const {scrollYProgress} = useScroll()
   const scaleX =useSpring(scrollYProgress,{
     stiffness:100,
@@ -144,13 +144,21 @@ const BasePage = () => {
         </div>
       </div>
   
-      <div className="text-2xl h-full relative z-20 section w-7/12 bg-[#222222] section-4">
+      <div className="text-2xl h-full relative z-20 section w-7/12 bg-[#222222]">
           <div className="w-screen lg:w-full h-full  p-10 pt-[10vh] pb-[60vh] flex flex-col">
             <About />
             <Experience />
             <Projects/>
           </div>
       </div>
+      <motion.div          
+      initial={{opacity:0}}
+      animate={{opacity:1}}
+      >
+        <div  className="w-screen h-screen z-30 relative bg-[#222222] section  section-4">
+
+        </div>
+      </motion.div>
     </div>
   );
 };
