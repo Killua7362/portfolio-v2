@@ -17,7 +17,7 @@ const BasePage = () => {
   const welcome = useRef();
   const root = useRef();
   const [ctx] = useState(gsap.context(() => {}, root));
-  const [debug, setDebug] = useState(true);
+  const [debug, setDebug] = useState(false);
   const {scrollYProgress} = useScroll()
   const scaleX =useSpring(scrollYProgress,{
     stiffness:100,
