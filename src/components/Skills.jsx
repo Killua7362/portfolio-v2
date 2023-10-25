@@ -8,7 +8,7 @@ const Skills = () => {
       setActive(event.target.id)
     }
     return (
-      <motion.div className="absolute w-full h-5/6  flex pt-3"
+      <motion.div className="absolute w-full  h-full  flex pt-3"
           initial='hidden'
           whileInView='visible'
           viewport={{once:false}}
@@ -18,7 +18,7 @@ const Skills = () => {
             hidden:{opacity:0,y:50}
           }}
       >
-        <div className="w-3/12  text-text mr-2 grid grid-cols-1 auto-rows-min lg:p-6 py-6 gap-4 text-xs md:text-base lg:text-lg">
+        <div className="w-3/12  text-text mr-2 grid grid-cols-1 auto-rows-min lg:p-6 py-6 gap-4 text-xs md:text-base lg:text-lg overflow-y-scroll scrollbar-thin scrollbar-thumb-[#363636] scrollbar-track-[#222222]" style={{direction:'rtl'}} data-lenis-prevent>
           {
             Object.keys(skills).map(function(name,index){
               return(
@@ -28,11 +28,11 @@ const Skills = () => {
             })
           }
         </div>
-        <div className="grid grid-cols-3 lg:grid-cols-4 gap-4 pl-4 py-6 lg:p-6 auto-rows-min w-9/12 data-lenis-prevent-wheel overflow-y-scroll" style={{scrollbarWidth:'none'}}>
+        <div className="grid grid-cols-3 lg:grid-cols-4 gap-4 pl-4 py-6 lg:p-6 auto-rows-min w-9/12 overflow-y-scroll cursor-grabbing scrollbar-thin scrollbar-thumb-[#363636] scrollbar-track-[#222222]" data-lenis-prevent>
 
         {skills[active].map(function(name,index){
           return(
-        <div className=" w-full h-11 flex justify-center items-center rounded-md data-lenis-prevent p-2  bg-primary/70 whitespace-nowrap ">
+        <div className=" w-full h-11 flex justify-center items-center rounded-md p-2  bg-primary/70 whitespace-nowrap ">
               <div className="text-xs md:text-[1.9vmin]">
                 {name}
               </div>
