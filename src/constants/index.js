@@ -32,7 +32,95 @@ const ProjectsData = [
         img_src:'portfolio.png',
         github_link:'https://github.com/Killua7362/portfolio-v2/',
         tech_stack:['ReactJS','Three JS','TailwindCss','GSAP','Lenis'],
-        live:''
+        live:'',
+    },
+    {
+        name:'Small',
+        description:'blogging website similar to medium but smaller',
+        img_src:'blog.png',
+        github_link:'https://github.com/Killua7362/blogger',
+        tech_stack:['NextJS','TailwindCss','Prisma','axios','clerk','zod','recoil'],
+        live:'',
+    },
+    {
+        name:'gptforme',
+        description:'chatgpt which uses my custom neural network library',
+        img_src:'gptforme.png',
+        github_link:'https://github.com/Killua7362/gptforme/',
+        tech_stack:['ReactJS','Flask','TailwindCss','clerk','redis','redux'],
+        live:'',
+    },
+    {
+        name:'clowder',
+        description:'scripts for creating the server automagically',
+        img_src:'gptforme.png',
+        github_link:'https://github.com/Killua7362/clowder/',
+        tech_stack:['Terraform','GKE','GCP','Ansible','Jenkins'],
+        live:'',
+    },
+    {
+        name:'MicroNet',
+        description:'Neural network library from scratch with gpu support',
+        img_src:'gptforme.png',
+        github_link:'https://github.com/Killua7362/MicroNet/',
+        tech_stack:['Numpy','Cupy'],
+        live:'',
+    },
+    {
+        name:'black grimore',
+        description:'My old portfolio + digital garden',
+        img_src:'gptforme.png',
+        github_link:'https://github.com/Killua7362/black-grimoire/',
+        tech_stack:['Nextjs'],
+        live:'',
+    },
+    {
+        name:'diffusion',
+        description:'unconditional stable diffusion from scratch using torch',
+        img_src:'gptforme.png',
+        github_link:'https://github.com/Killua7362/diffusion/',
+        tech_stack:['torch'],
+        live:'',
+    },
+    {
+        name:'animefusion',
+        description:'condition stable diffusion from scratch using torch and trained on anime waifus',
+        img_src:'gptforme.png',
+        github_link:'https://github.com/Killua7362/animefusion/',
+        tech_stack:['torch'],
+        live:'',
+    },
+    {
+        name:'vqgan',
+        description:'vqgan from scratch',
+        img_src:'gptforme.png',
+        github_link:'https://github.com/Killua7362/vqgan/',
+        tech_stack:['torch'],
+        live:'',
+    },
+    {
+        name:'deduper',
+        description:'duplicate record finder',
+        img_src:'gptforme.png',
+        github_link:'https://github.com/Killua7362/deduper/',
+        tech_stack:['sklearn','xgboost'],
+        live:'',
+    },
+    {
+        name:'picogpt',
+        description:'character level gpt model from scratch',
+        img_src:'gptforme.png',
+        github_link:'https://github.com/Killua7362/picogpt/',
+        tech_stack:['numpy'],
+        live:'',
+    },
+    {
+        name:'otakuflix',
+        description:'anime streaming app',
+        img_src:'gptforme.png',
+        github_link:'https://github.com/Killua7362/otakuflix/',
+        tech_stack:['Nextjs'],
+        live:'',
     },
 ]
 
@@ -47,12 +135,14 @@ const skills={
         'Redux',
         'Recoil',
         'Next.js',
-        'Vite'
+        'Vite',
+	'GraphQL'
 ],
     'Backend':['Node.JS','Express','Flask'],
-    'Database':['MySQL','MongooDB','FireBase'],
-    'Testing':['Jest'],
-    'Tools':['Git','Linux','Vim']
+    'Database':['MySQL','MongooDB','FireBase','Redis'],
+    'Testing':['Jenkins','Jest','python unittest'],
+    'Cloud':['Terraform','GCP','Ansible'],
+    'Tools':['Git','Linux','Docker','Vim',]
 }
 const aboutMe = 'Testing'
 export {experience,aboutMe,skills,ProjectsData};

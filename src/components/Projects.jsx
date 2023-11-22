@@ -21,7 +21,7 @@ const Projects = () => {
                 Projects
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-4 pt-8">
-                {ProjectsData.map(function (item,i){
+                {ProjectsData.slice(0,3).map(function (item,i){
                     return(
                         <ProjectCard key={i} ProjectData={item}/>
                     )

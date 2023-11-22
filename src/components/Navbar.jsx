@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import resume from '../resume.pdf'
 const NavBar = () => {
   const [isHovered,setIsHovered] = useState(false)
   const [imgHovered,setImgHovered] = useState('navbar/nothovered.png')
@@ -31,14 +31,18 @@ const NavBar = () => {
                 onMouseEnter={(e)=>{e.currentTarget.style.backgroundColor ='#deb03e' }}
                 onMouseLeave={(e)=>{e.currentTarget.style.backgroundColor ='#FFCE56'}}
               >
-                                  Resume-1
+						<a target = "_blank" href={resume} className="text-white">
+							Resume
+						</a>
                       </div>
                         <a href="mailto:bhat7362@gmail.com" color="black">
                       <div className="w-[8.5rem] h-full bg-[#FFCE56] text-background p-2 rounded-lg text-center"
                       onMouseEnter={(e)=>{e.currentTarget.style.backgroundColor ='#deb03e' }}
                       onMouseLeave={(e)=>{e.currentTarget.style.backgroundColor ='#FFCE56'}}
                       >
-                        Hire Me
+						<a target = "_blank" href="mailto:bhat7362@gmail.com" className="text-white">
+							Hire me
+						</a>
                       </div>
                         </a>
                     </div>
