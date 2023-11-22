@@ -7,13 +7,6 @@ const ProjectPage = () => {
 		<div className="h-full w-screen bg-background text-text" data-lenis-prevent>
 			<NavBar />
 			<div className="w-6/12 h-full mx-auto relative z-30">
-				<Link to={-1}>
-					<div className="flex gap-x-2 text-text items-center pt-10 all-project-class-10" onMouseEnter={(e) => {
-					}}>
-						<FaLongArrowAltLeft className='all-project-class-11' />
-						Return
-					</div>
-				</Link>
 				<div className="text-5xl pt-10 border-solid border-b-2 border-text/20 pb-6">
 					ALL PROJECTS
 				</div>
