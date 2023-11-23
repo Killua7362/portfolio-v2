@@ -28,7 +28,7 @@ const Projects = () => {
                 })}
             </div>
             <div className="text-lg my-8 w-fit">
-            <Link to='projects' className="flex text-text all-project-class-00 items-center visited:text-text" target="_blank" rel="noopener noreferrer">
+            <Link to='projects' className="flex text-text all-project-class-00 items-center visited:text-text">
                 View All Projects
                 <FaLongArrowAltRight className='mt-1 ml-1 all-project-class-01'/>
             </Link>
