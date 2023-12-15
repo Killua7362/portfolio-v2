@@ -1,11 +1,11 @@
 const experience = [
     {
-        title:'Machine Learning Volunteer',
+        title:'Software Engineer Intern',
         company_name:'Unify Ivy',
         company_color:'green-400',
         icon_outline:'green',
         img_src:'experience/ivy.png',
-        date:'Aug 2023 - Sep 2023',
+        date:'Jun 2023 - Present',
         points:[
             'Implemented Audio Spectrogram transformer which transforms audio into spectrogram and runs image classification using transformer architecture',
             'Implemented torch mobile support for Ivy\'s autotuner',
