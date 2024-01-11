@@ -33,7 +33,7 @@ const Room = () => {
     const [ctx] = useState(gsap.context(() => {}, root));
     const [floorRadius,setFloorRadius] = useState(0.3)
     const [zoomLevel,setZoomLevel]=useState(sizes()*0.03)
-    const [initZoomLevel,setInitZoomLevel]=useState(0.7)
+    const [initZoomLevel,setInitZoomLevel]=useState(0.6)
     const initBox = useRef(null)
     const room= useRef(null)
     useLayoutEffect(()=>{
@@ -111,7 +111,7 @@ return (
             global={true}
             >
             <group dispose={null}>
-            <mesh  position={[1.0,0.6,-2]} scale={initZoomLevel} castShadow receiveShadow ref={initBox} visible={true}>
+            <mesh  position={[0.0,1.2,-2]} scale={initZoomLevel} castShadow receiveShadow ref={initBox} visible={true}>
                 <boxGeometry/>
                 <meshBasicMaterial attach="material-0" /> {/*right*/}
                 <meshBasicMaterial attach="material-1" color={'#584E8A'}/> {/*left*/}
@@ -125,7 +125,7 @@ return (
                   <ambientLight intensity={2}/>
                   <directionalLight intensity={6} position={[1,2,4]}/>
             </mesh>
-            <mesh position={[2.0,-0.7,-1]} visible={true}>
+            <mesh position={[1.0,-0.2,-1]} visible={true}>
                 <Circle rotation={[THREE.MathUtils.degToRad(-90),THREE.MathUtils.degToRad(0),THREE.MathUtils.degToRad(0)]} args={[floorRadius]} >
                     <meshBasicMaterial color={'#333333'}/>
                 </Circle>

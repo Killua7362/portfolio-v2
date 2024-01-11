@@ -97,7 +97,7 @@ const BasePage = () => {
 	}, []);
 	return (
 		<div className="h-full w-full" ref={root}>
-			<div className="fixed h-screen w-full z-10">
+			<div className="fixed h-screen w-full z-10 ">
 				<Model />
 			</div>
 			<motion.div
@@ -105,14 +105,14 @@ const BasePage = () => {
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ duration: 1, type: 'spring', bounce: 0.3, delay: 0.2 }}>
 				<div
-					className={`text-5xl z-0 h-screen relative justify-center items-center flex section-1 section text-text welcome-text`}
+					className={`text-3xl ml-8 lg:ml-32 lg:text-5xl z-0 h-screen relative justify-center items-center flex section-1 section text-text welcome-text`}
 					ref={welcome}
 				>
 					WELCOME
 				</div>
 			</motion.div>
 
-			<div className="text-2xl lg:text-6xl h-screen relative z-0 flex flex-col justify-end items-start pb-24 md:pb-4 pl-4 lg:pb-8 lg:pl-16 section-2 section"
+			<div className="text-2xl lg:text-6xl h-screen relative z-0 flex flex-col justify-end items-start pb-24 md:pb-4 pl-4 pb-8 lg:pl-16 section-2 section"
 			>
 				<div className="relative">
 					<div className="text-start text-text name-text">Akshay Bhat</div>
@@ -122,19 +122,19 @@ const BasePage = () => {
 				</div>
 			</div>
 			<motion.div className="sticky w-full top-0 z-30 h-1 bg-[#ffff] origin-[0%]" style={{ scaleX: scaleX }} />
-			<div className="h-screen relative z-20 section w-7/12 section-3 text-white flex flex-col justify-center ml-36">
-				<div>
-					<div className="text-2xl tracking-[0.2rem]">
+			<div className="h-screen relative z-20 section w-9/12 section-3 text-white flex flex-col justify-center lg:ml-36 ">
+				<div className="ml-10 lg:ml-0">
+					<div className="text-2xl lg:tracking-[0.2rem] tracking-[0.2rem]">
 						Hi, My name is
 					</div>
-					<div className="text-8xl tracking-[1rem] pt-4">
+					<div className="lg:text-7xl text-4xl lg:tracking-[1rem] tracking-[0.2rem] lg:pt-4">
 						Akshay Bhat
 					</div>
 				</div>
-				<div className="w-10/12 text-xl text-text/80 tracking-widest pt-8 text-justify">
+				<div className="lg:w-9/12 w-10/12 lg:text-xl text-lg text-text/80 lg:tracking-widest pt-8 ml-10 lg:ml-0 ">
 					I am an enthusiastic and driven web developer with a strong interest in machine learning. As an undergraduate, I have developed a deep understanding of various programming languages and technologies, including Python and Javascript. My passion for technology and innovation has led me to explore the field of machine learning, where I am constantly learning new techniques to improve my projects. I am dedicated to delivering high-quality machine learning or web solutions that are not only functional but also user-friendly and visually appealing. With my strong technical skills and passion for innovation, I am confident in my ability to bring your vision to life.
 				</div>
-				<div className="flex pt-10 space-x-6">
+				<div className="flex pt-10 space-x-6 justify-center lg:justify-normal">
 					<div className="bg-[#242424] rounded-md text-xl outline outline-white outline-1 w-[8.5rem] text-center align-middle p-2">
 						<a target = "_blank" href="mailto:bhat7362@gmail.com" className="text-white">
 							Hire me
@@ -148,7 +148,7 @@ const BasePage = () => {
 				</div>
 			</div>
 
-			<div className="text-2xl h-full relative z-20 section w-7/12 bg-[#222222]">
+			<div className="text-2xl h-full relative z-20 section lg:w-7/12 bg-[#222222]">
 				<div className="w-screen lg:w-full h-full  p-10 pt-[10vh] pb-[60vh] flex flex-col">
 					<About />
 					<Experience />

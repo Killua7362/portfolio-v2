@@ -5,7 +5,7 @@ const experience = [
         company_color:'green-400',
         icon_outline:'green',
         img_src:'experience/ivy.png',
-        date:'Jun 2023 - Present',
+        date:'Jun 2023 - Nov 2023',
         points:[
             'Implemented Audio Spectrogram transformer which transforms audio into spectrogram and runs image classification using transformer architecture',
             'Implemented torch mobile support for Ivy\'s autotuner',
@@ -125,7 +125,7 @@ const ProjectsData = [
 ]
 
 const skills={
-    'Languages':['Javascript','Python','Typescript','C++','C'],
+    'Languages':['Java','Javascript','Python','Typescript','C++','C'],
     'Libraries':['Pytorch','Tensorflow','Jax','Scikit-Learn','Pandas','Numpy','Matplotlib'],
     'Front-End':[
         'HTML',
@@ -140,9 +140,9 @@ const skills={
 ],
     'Backend':['Node.JS','Express','Flask'],
     'Database':['MySQL','MongooDB','FireBase','Redis'],
-    'Testing':['Jenkins','Jest','python unittest'],
+    'Testing':['Jenkins','Jest','python unittest','Selenium','Gatling'],
     'Cloud':['Terraform','GCP','Ansible'],
-    'Tools':['Git','Linux','Docker','Vim',]
+    'Tools':['Git','Linux','Docker','Vim', 'Postman']
 }
 const aboutMe = 'Testing'
 export {experience,aboutMe,skills,ProjectsData};

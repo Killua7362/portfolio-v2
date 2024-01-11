@@ -20,15 +20,15 @@ const ExperienceCard = ({experience})=>{
           <div className=' text-base pb-1 text-text/60'>
             {experience.date}
           </div>
-          <h3 className='text-[1.7rem] lg:text-[2.3rem] font-bold mr-8 lg:mr-0'>
+          <h3 className='text-[1.5rem] lg:text-[2.3rem] font-bold mr-8 lg:mr-0'>
             {experience.title}
           </h3>
-          <div className={ `text-xl pt-3 text-${experience.company_color}` }>
+          <div className={ `text-[1.1rem] pt-3 text-${experience.company_color}` }>
             {experience.company_name}
           </div>
           <ul className='list-disc pl-8 pt-3 '>
             {experience.points.map((point,index)=>{
-              return <li className='text-lg tracking-wider'>{point}</li>
+              return <li className='text-[1.1rem] tracking-wider'>{point}</li>
             })}
           </ul>
         </div>
