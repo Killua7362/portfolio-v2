@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { kv } from "@vercel/kv";
 
+const apiToken = ""
+
 const ProjectPage = () => {
 	const [lastDate,setLastDate] = useState({})
 
 	useEffect(()=>{
 		const savedLastDate = JSON.parse(localStorage.getItem('dates'))
-		const redis_token = import.meta.env.VITE_KV_REST_API_TOKEN
+		const redis_token = ""
 
 		ProjectsData.map((ele,i)=>{
 			const repo_name = ele.github_link.split('https://github.com/')[1]
