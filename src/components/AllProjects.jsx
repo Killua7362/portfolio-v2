@@ -3,7 +3,6 @@ import NavBar from "./Navbar";
 import { ProjectsData } from "../constants";
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
-import { kv } from "@vercel/kv";
 
 const apiToken = ""
 
