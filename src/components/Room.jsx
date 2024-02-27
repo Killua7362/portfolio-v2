@@ -113,12 +113,12 @@ return (
             <group dispose={null}>
             <mesh  position={[0.0,1.2,-2]} scale={initZoomLevel} castShadow receiveShadow ref={initBox} visible={true}>
                 <boxGeometry/>
-                <meshBasicMaterial attach="material-0" /> {/*right*/}
-                <meshBasicMaterial attach="material-1" color={'#584E8A'}/> {/*left*/}
-                <meshBasicMaterial attach="material-2" color={'#5664A6'}/> {/*top*/}
-                <meshBasicMaterial attach="material-3" /> {/*bottom*/}
-                <meshBasicMaterial attach="material-4" /> {/*front*/}
-                <meshBasicMaterial attach="material-5" color={'#5664A6'}/> {/*back*/}
+                <meshBasicMaterial attach="material-0" /> 
+                <meshBasicMaterial attach="material-1" color={'#584E8A'}/> 
+                <meshBasicMaterial attach="material-2" color={'#5664A6'}/> 
+                <meshBasicMaterial attach="material-3" /> 
+                <meshBasicMaterial attach="material-4" /> 
+                <meshBasicMaterial attach="material-5" color={'#5664A6'}/> 
             </mesh>
             <mesh  position={[0.5,-0.5,-1.1]} visible={false} ref={room}>
                 <primitive object={gltf.scene} shadows scale={zoomLevel}/>

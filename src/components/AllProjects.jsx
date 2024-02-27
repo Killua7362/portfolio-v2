@@ -2,7 +2,42 @@ import { FaLongArrowAltLeft } from "react-icons/fa";
 import NavBar from "./Navbar";
 import { ProjectsData } from "../constants";
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { kv } from "@vercel/kv";
+
 const ProjectPage = () => {
+	const [lastDate,setLastDate] = useState({})
+
+	useEffect(()=>{
+		const savedLastDate = JSON.parse(localStorage.getItem('dates'))
+		const redis_token = import.meta.env.VITE_KV_REST_API_TOKEN
+
+		ProjectsData.map((ele,i)=>{
+			const repo_name = ele.github_link.split('https://github.com/')[1]
+			if(savedLastDate == null || !savedLastDate.has(repo_name) || ( savedLastDate.get(repo_name).get(time_stamp) ) > 691200000){
+
+			}
+		})
+
+		const fetchDate = async (repo_name) => {
+			try{
+				const response = await fetch(`https://api.github.com/repos/${repo_name}commits`,{
+					method:"GET",
+					headers:{
+						Authorization:`Bearer ${apiToken}`,
+					}
+				})
+				.then(res=>res.json())
+				.then(res=>console.log(res))
+				//last commit date
+				//res[0].commit.author.date 
+			}catch(error){
+				console.log(error);
+			}
+		}
+
+	},[])
+
 	return (
 		<div className="h-full w-screen bg-background text-text" data-lenis-prevent>
 			<NavBar />

@@ -17,7 +17,7 @@ const BasePage = () => {
 	const welcome = useRef();
 	const root = useRef();
 	const [ctx] = useState(gsap.context(() => { }, root));
-	const [debug, setDebug] = useState(false);
+	const [debug, setDebug] = useState(true);
 	const { scrollYProgress } = useScroll()
 	const scaleX = useSpring(scrollYProgress, {
 		stiffness: 100,
@@ -95,6 +95,7 @@ const BasePage = () => {
 		});
 		return () => ctx.revert();
 	}, []);
+	
 	return (
 		<div className="h-full w-full" ref={root}>
 			<div className="fixed h-screen w-full z-10 ">
