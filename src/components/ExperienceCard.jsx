@@ -1,10 +1,11 @@
 import {VerticalTimelineElement } from 'react-vertical-timeline-component'
+import { FcLink,FcClock } from "react-icons/fc";
+
 const ExperienceCard = ({experience})=>{
     return(
       <VerticalTimelineElement
       contentStyle={{
-        background:'#333333',
-        padding:0,
+        background:'#1C1C1F',
         border:1,
         borderColor:'black',
       }}
@@ -17,16 +18,20 @@ const ExperienceCard = ({experience})=>{
     }
       >
         <div className='py-4 px-6 flex flex-col text-text'>
-          <div className=' text-base pb-1 text-text/60'>
+          <div className='flex text-base pb-1 text-text/60 items-center gap-x-4'>
+            <FcClock size={30}/>
             {experience.date}
           </div>
-          <h3 className='text-[1.5rem] lg:text-[2.3rem] font-bold mr-8 lg:mr-0'>
+          <h3 className='text-[1.2rem] lg:text-[1.7rem] font-bold uppercase'>
             {experience.title}
           </h3>
-          <div className={ `text-[1.1rem] pt-3 text-${experience.company_color}` }>
+          <div className={ `flex items-center gap-x-2 text-[1.1rem] text-${experience.company_color}` }>
             {experience.company_name}
+            <a target = "_blank" href={experience.company_site} tabindex="-1">
+              <FcLink	/>
+            </a>
           </div>
-          <ul className='list-disc pl-8 pt-3 '>
+          <ul className='list-disc pl-4 pt-1 '>
             {experience.points.map((point,index)=>{
               return <li className='text-[1.1rem] tracking-wider'>{point}</li>
             })}

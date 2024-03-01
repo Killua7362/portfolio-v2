@@ -4,9 +4,14 @@ import 'react-vertical-timeline-component/style.min.css';
 import ExperienceCard from "./ExperienceCard";
 import {motion} from 'framer-motion'
 
-const Experience = () => {
+const Experience = ({settingsValues}) => {
     return (
-        <div className="w-screen min-h-screen flex flex-col items-center section section-5 mt-16">
+        <div className={`w-screen min-h-screen flex flex-col items-center section section-5 mt-${!settingsValues["scroll_snap"]?"30":"32"}`}>
+        {!settingsValues["scroll_snap"] &&
+        <div className='text-5xl uppercase mb-8 text-text'>
+          Experience
+        </div>
+        }
             <div>
             <VerticalTimeline animate={true} className=" lg:w-8/12 relative z-10 top-4" layout="1-column-left" lineColor="#e4f3fb">
                   {experience.map((exp,i)=>{

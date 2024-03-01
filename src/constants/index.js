@@ -2,6 +2,7 @@ const experience = [
     {
         title:'Software Engineer Intern',
         company_name:'Unify Ivy',
+        company_site:"https://unify.ai/",
         company_color:'green-400',
         icon_outline:'green',
         img_src:'experience/ivy.png',
@@ -14,7 +15,8 @@ const experience = [
     },
     {
         title:'Machine Learning Research Intern',
-        company_name:'National Institute of Technology Karnataka',
+        company_name:'HALE lab',
+        company_site:'https://halelabnitk.github.io/',
         company_color:'blue-800',
         icon_outline:'#0275D8',
         img_src:'experience/nitk.jpeg',
@@ -53,7 +55,7 @@ const ProjectsData = [
     {
         name:'clowder',
         description:'scripts for creating the server automagically',
-        img_src:'gptforme.png',
+        img_src:'',
         github_link:'https://github.com/Killua7362/clowder/',
         tech_stack:['Terraform','GKE','GCP','Ansible','Jenkins'],
         live:'',
@@ -61,7 +63,7 @@ const ProjectsData = [
     {
         name:'MicroNet',
         description:'Neural network library from scratch with gpu support',
-        img_src:'gptforme.png',
+        img_src:'',
         github_link:'https://github.com/Killua7362/MicroNet/',
         tech_stack:['Numpy','Cupy'],
         live:'',
@@ -69,7 +71,7 @@ const ProjectsData = [
     {
         name:'black grimore',
         description:'My old portfolio + digital garden',
-        img_src:'gptforme.png',
+        img_src:'',
         github_link:'https://github.com/Killua7362/black-grimoire/',
         tech_stack:['Nextjs'],
         live:'',
@@ -77,7 +79,7 @@ const ProjectsData = [
     {
         name:'diffusion',
         description:'unconditional stable diffusion from scratch using torch',
-        img_src:'gptforme.png',
+        img_src:'',
         github_link:'https://github.com/Killua7362/diffusion/',
         tech_stack:['torch'],
         live:'',
@@ -85,7 +87,7 @@ const ProjectsData = [
     {
         name:'animefusion',
         description:'condition stable diffusion from scratch using torch and trained on anime waifus',
-        img_src:'gptforme.png',
+        img_src:'',
         github_link:'https://github.com/Killua7362/animefusion/',
         tech_stack:['torch'],
         live:'',
@@ -93,7 +95,7 @@ const ProjectsData = [
     {
         name:'vqgan',
         description:'vqgan from scratch',
-        img_src:'gptforme.png',
+        img_src:'',
         github_link:'https://github.com/Killua7362/vqgan/',
         tech_stack:['torch'],
         live:'',
@@ -109,8 +111,8 @@ const ProjectsData = [
     {
         name:'picogpt',
         description:'character level gpt model from scratch',
-        img_src:'gptforme.png',
-        github_link:'https://github.com/Killua7362/picogpt/',
+        img_src:'',
+github_link:'https://github.com/Killua7362/picogpt/',
         tech_stack:['numpy'],
         live:'',
     },

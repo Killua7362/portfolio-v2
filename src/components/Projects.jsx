@@ -4,24 +4,16 @@ import { ProjectsData } from "../constants";
 import { Link } from "react-router-dom";
 import {motion} from 'framer-motion'
 
-const Projects = () => {
+const Projects = ({settingsValues}) => {
     return (
-        <div className="w-fit min-h-screen section section-6  mx-auto text-text pt-14"
-        >
-        <motion.div className="font-bold text-4xl tracking-wide pb-6 pt-8 "
-          initial='hidden'
-          whileInView='visible'
-          viewport={{once:false}}
-          transition={{duration:0.3,delay:0.1}}
-          variants={{
-            visible:{opacity:1,y:0},
-            hidden:{opacity:0,y:50}
-          }}
-            >
-                Projects
-            </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-4 pt-8">
-                {ProjectsData.slice(0,3).map(function (item,i){
+        <div className="lg:w-10/12 w-full min-h-screen section section-6  mx-auto text-text pt-14">
+            {!settingsValues["scroll_snap"]&&
+                <div className="text-5xl uppercase text-center my-6">
+                    Projects
+                </div>
+            }
+            <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-4 pt-8">
+                {ProjectsData.slice(0,4).map(function (item,i){
                     return(
                         <ProjectCard key={i} ProjectData={item}/>
                     )

@@ -1,6 +1,6 @@
 import Model from "./Model";
 import Lenis from "@studio-freight/lenis";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
@@ -13,14 +13,29 @@ import './components.css'
 import Linx from "./Linx";
 import Skills from "./Skills";
 import ProgressBar from "./ProgressBar";
+import Settings from "./Settings";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const BasePage = () => {
 	const welcome = useRef();
 	const root = useRef();
 	const [ctx] = useState(gsap.context(() => { }, root));
-	const [debug, setDebug] = useState(false);
 	const [sectionNum,setSectionNum] = useState(1);
+	const [openSettings,setOpenSettings] = useState(false);
+	const [isRender,setIsRender] = useState(false);
+	const [settingsValues,setSettingsValues] = useState({
+		"model_visibility":false,
+		"smooth_scroll":true,
+		"scroll_snap":true,
+	});
+
+	useEffect(()=>{
+		let savedSettings = JSON.parse(localStorage.getItem('settingsValues'))
+		if(savedSettings){
+			setSettingsValues(savedSettings)
+		}
+		setIsRender(true);
+	},[])
 
 	const scrolling = {
 		enabled: true,
@@ -49,12 +64,11 @@ const BasePage = () => {
 	};
 
 	const lenis = new Lenis({
-		smoothWheel: true,
+		smoothWheel: settingsValues["smooth_scroll"],
 		smoothTouch: false,
 	});
 
 	const goToSection = (section,i) => {
-		setSectionNum(i);
 		if (scrolling.enabled) {
 			// skip if a scroll tween is in progress
 			lenis.stop();
@@ -76,30 +90,46 @@ const BasePage = () => {
 		gsap.ticker.add((time) => {
 			lenis.raf(time * 1000);
 		});
-
-		if (debug) return;
+		lenis.start()
 		ctx.add(() => {
-
 			let panels = gsap.utils.toArray(".section");
 			panels.forEach((panel, i) => {
 				ScrollTrigger.create({
 					trigger: panel,
 					start: "top bottom-=1",
 					end: "bottom top+=1",
-					onEnter: () => goToSection(panel,i),
-					onEnterBack: () => goToSection(panel,i),
+					onEnter: () =>{
+						if(settingsValues["scroll_snap"]){
+	 						goToSection(panel,i)					
+						}
+						setSectionNum(i)
+					},
+					onEnterBack: () =>{
+						if(settingsValues["scroll_snap"]){
+	 						goToSection(panel,i)					
+						}
+						setSectionNum(i)
+					},
 				});
 			});
 		});
 		return () => ctx.revert();
-	}, []);
+	}, [settingsValues["scroll_snap"]]);
 	
 	return (
 		<div className="h-full w-full" ref={root}>
 			<div className="fixed h-screen w-full z-10 ">
-				<Model />
+				{
+					settingsValues["model_visibility"] && <Model />
+				}
 			</div>
-			<ProgressBar sectionNum={sectionNum}/>
+
+			{
+				isRender &&
+					<Settings openSettings={openSettings} setOpenSettings={setOpenSettings} settingsValues={settingsValues} setSettingsValues={setSettingsValues}/>
+			}
+
+			<ProgressBar sectionNum={sectionNum} setOpenSettings={setOpenSettings} settingsValues={settingsValues}/>
 			<motion.div
 				initial={{ y: -200, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
@@ -111,9 +141,7 @@ const BasePage = () => {
 					WELCOME
 				</div>
 			</motion.div>
-
-			<div className="text-2xl lg:text-6xl min-h-screen relative z-0 flex flex-col justify-end items-start pb-24 md:pb-4 pl-4 lg:pl-16 section-2 section"
-			>
+			 <div className={`text-2xl lg:text-6xl min-h-screen relative z-0 flex flex-col justify-end items-start pb-24 md:pb-4 pl-4 lg:pl-16 section-2 section`}>
 				<div className="relative">
 					<div className="text-start text-text name-text">Akshay Bhat</div>
 					<div className="text-base lg:text-xl text-text/60 pt-1">
@@ -171,10 +199,10 @@ const BasePage = () => {
 				</motion.div>
 			</div>
 
-			<div className="w-screen min-h-screen relative z-20 p-10 pt-[10vh] pb-[60vh] flex flex-col items-center lg:backdrop-blur-sm lg:bg-inherit bg-[#222222]">
-					<Skills/>
-					<Experience />
-					<Projects />
+			<div className="w-screen min-h-screen relative z-20 p-10 pt-[10vh] pb-[60vh] flex flex-col items-center bg-[#222222]">
+					<Skills settingsValues={settingsValues}/>
+					<Experience  settingsValues={settingsValues}/>
+					<Projects  settingsValues={settingsValues}/>
 			</div>
 			<motion.div
 				initial={{ opacity: 0 }}

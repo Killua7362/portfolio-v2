@@ -7,9 +7,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger)
 
 import * as THREE from 'three'
-const sizes = ()=>{
-    let height = window.innerHeight
-    let width= window.innerWidth
+const sizes = (height,width)=>{
     if(height>width){
         return height/width + 0.1
     }
@@ -22,6 +20,9 @@ const sizes = ()=>{
 const Room = () => {
     const three = useThree()
     const gltf = useGLTF('/untitled.glb')
+
+    const { width, height } = useThree(state => state.viewport)
+
     gltf.scene.children.forEach((mesh, i) => {
         mesh.castShadow = true;
         mesh.receiveShadow= true;
@@ -32,8 +33,7 @@ const Room = () => {
     gltf.scene.receiveShadow= true;
     const [ctx] = useState(gsap.context(() => {}, root));
     const [floorRadius,setFloorRadius] = useState(0.3)
-    const [zoomLevel,setZoomLevel]=useState(sizes()*0.03)
-    const [initZoomLevel,setInitZoomLevel]=useState(0.6)
+    const [initZoomLevel,setInitZoomLevel]=useState(sizes(height,width)*0.2)
     const initBox = useRef(null)
     const room= useRef(null)
     useLayoutEffect(()=>{
@@ -49,7 +49,7 @@ const Room = () => {
                     scrub:true,
                     immediateRender:false,
                     onUpdate: trigger =>{
-                        setInitZoomLevel(trigger.progress * (sizes()-0.7) + 0.7)
+                        setInitZoomLevel(trigger.progress * (sizes(height,width)-0.7) + 0.7)
                         if(trigger.progress >= 0.85){
                             initBox.current.visible = false                            
                             room.current.visible = true
@@ -77,9 +77,9 @@ const Room = () => {
                     setFloorRadius(trigger.progress * (20-0.3) + 0.3)
                     three.invalidate()
                 }
-        }
-        }
-        )
+            }
+            }
+            )
         }
         else{
             gsap.to(three.scene.position,{
@@ -111,7 +111,7 @@ return (
             global={true}
             >
             <group dispose={null}>
-            <mesh  position={[0.0,1.2,-2]} scale={initZoomLevel} castShadow receiveShadow ref={initBox} visible={true}>
+            <mesh  position={[0.0,1.2,-2]} scale={initZoomLevel > sizes(height,width)*0.2?initZoomLevel:sizes(height,width)*0.2} castShadow receiveShadow ref={initBox} visible={true}>
                 <boxGeometry/>
                 <meshBasicMaterial attach="material-0" /> 
                 <meshBasicMaterial attach="material-1" color={'#584E8A'}/> 
@@ -121,7 +121,7 @@ return (
                 <meshBasicMaterial attach="material-5" color={'#5664A6'}/> 
             </mesh>
             <mesh  position={[0.5,-0.5,-1.1]} visible={false} ref={room}>
-                <primitive object={gltf.scene} shadows scale={zoomLevel}/>
+                <primitive object={gltf.scene} shadows scale={sizes(height,width)*0.03}/>
                   <ambientLight intensity={2}/>
                   <directionalLight intensity={6} position={[1,2,4]}/>
             </mesh>

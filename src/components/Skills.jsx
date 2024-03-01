@@ -1,9 +1,15 @@
 import {skills} from '../constants/index'
 
-const Skills = () => {
+const Skills = ({settingsValues}) => {
     return (
-    <div className="w-screen text-text min-h-screen flex justify-center items-center section section-4">
-        <div className="bg-[#333333] lg:w-11/12 lg:h-11/12 flex flex-wrap lg:flex-nowrap p-8 lg:rounded-3xl gap-10 lg:gap-0">
+    <div className="w-screen text-text bg-[#222222] min-h-screen flex justify-center items-center section section-4 flex-col">
+        {
+        !settingsValues["scroll_snap"] &&
+        <div className='text-5xl uppercase mb-8'>
+            Skills
+        </div>
+        }
+        <div className="bg-[#18181B] lg:w-11/12 lg:h-11/12 flex flex-wrap lg:flex-nowrap p-8 m-4 lg:m-0 rounded-3xl gap-10 lg:gap-0 shadow-2xl  border-white/30 border-[0.1px]">
             {
                 skills.map((ele,idx)=>{
                     return (

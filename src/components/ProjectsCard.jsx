@@ -2,7 +2,7 @@ import { FaGithub, FaLongArrowAltRight } from "react-icons/fa";
 import {motion} from 'framer-motion'
 const ProjectCard= ({ProjectData}) => {
     return (
-        <motion.div className="relative text-base p-4 bg-primary px-8 rounded-xl"
+        <motion.div className="relative text-base p-4 bg-[#1C1C1F] px-8 rounded-xl w-5/6 border-white/30 border-[0.01px]"
           initial='hidden'
           whileInView='visible'
           viewport={{once:false}}
@@ -25,7 +25,7 @@ const ProjectCard= ({ProjectData}) => {
                     {ProjectData.description}
                 </div>
                 <div className="pt-4">
-                    <img src={`projects/${ProjectData.img_src}`} className="h-full w-full max-w-[350px] max-h-[200px]"/>
+                <img src={`projects/${ProjectData.img_src === ""?"noimage.png":ProjectData.img_src}`} className="h-full w-full max-w-[350px] max-h-[200px] border-white/30 border-[0.1px]"/>:
                 </div>
                 <div className="flex justify-start pt-4">
                     <a href={ProjectData.github_link} tabindex="-1" className="text-text">
@@ -34,7 +34,7 @@ const ProjectCard= ({ProjectData}) => {
                     <div className="flex text-black justify-start pl-2 pr-2 gap-3 text-xs flex-wrap">
                         {ProjectData.tech_stack.map(function(item,i){
                             return(
-                            <div className=" bg-[#35a9e3] rounded-2xl px-2 py-1 text-center whitespace-nowrap">
+                            <div className=" bg-[#222222] text-text rounded-2xl px-2 py-1 text-center whitespace-nowrap border-white/30 border-[0.1px]">
                                 {item}
                             </div>
                             )
