@@ -130,12 +130,12 @@ const skills=[
     {
         "title":"Machine Learning",
         "image_path":"icons/machinelearning.png",
-        "border_color":"red",
+        "border_color":"red-300",
         "tech_stack":['Pytorch','Tensorflow','Jax','Scikit-Learn','Pandas','Numpy','Matplotlib','Pyspark'],
     },{
         "title":"Web development",
         "image_path":"icons/webdev.png",
-        "border_color":"blue",
+        "border_color":"blue-300",
         "tech_stack":[
             'React.Js',
             'Next.js',
@@ -150,19 +150,19 @@ const skills=[
 {
     "title":"Language",
     "image_path":"icons/language.png",
-    "border_color":"yellow",
+    "border_color":"yellow-300",
     "tech_stack":['Java','Javascript','Python','Typescript','C++','C']
 },
 {
     "title":"Tools",
     "image_path":"icons/tools.png",
-    "border_color":"orange",
+    "border_color":"orange-300",
     "tech_stack":['Git','Linux','Docker','Vim', 'Postman','Jenkins']
 },
     {
         "title":"Cloud and Database",
         "image_path":"icons/cloud.png",
-        "border_color":"cyan",
+        "border_color":"cyan-300",
         "tech_stack":[
             'Terraform','GCP','Ansible','MySQL','MongooDB','FireBase','Redis',
         ]

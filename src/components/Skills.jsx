@@ -14,7 +14,7 @@ const Skills = ({settingsValues}) => {
                 skills.map((ele,idx)=>{
                     return (
                         <div className="w-5/12 lg:w-3/12 flex flex-col items-center">
-                            <div className={`flex flex-col justify-center items-center gap-y-4 pb-10 w-10/12 border-b-2 border-${ele.border_color}-300`}>
+                            <div className={`flex flex-col justify-center items-center gap-y-4 pb-10 w-10/12 border-b-2 border-${ele.border_color}`}>
                                 <div className="text-xl text-center lg:text-2xl uppercase leading-10 font-mono">
                                     {ele.title}
                                 </div>

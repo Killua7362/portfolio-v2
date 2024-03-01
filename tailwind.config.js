@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: ['border-red-300', 'border-blue-300', 'border-yellow-300', 'border-orange-300','border-cyan-300'],
   theme: {
     extend: {
       colors:{
