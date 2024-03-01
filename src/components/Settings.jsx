@@ -30,44 +30,7 @@ const Settings = ({
     openSettings && (
       <div className="fixed w-screen h-screen z-40 backdrop-blur-lg text-text flex justify-center items-center">
         <div className="bg-[#1C1C1F] h-fit lg:w-2/12 w-8/12 flex p-4 flex-col items-center rounded-xl border-white/30 border-[0.1px]">
-          <div className="flex flex-col justify-around w-full items-center">
-            <div className="uppercase text-lg">Recommended</div>
-            <div className="flex w-full justify-around my-3">
-              <div
-                className="bg-[#333333] p-1 px-4 rounded-lg border-white/30 border-[0.1px] cursor-pointer"
-                onClick={() => {
-                  setTempSettingsValues({
-                    model_visibility: true,
-                    smooth_scroll: true,
-                    scroll_snap: false,
-                  });
-                }}
-              >
-                Mobile
-              </div>
-              <div
-                className="bg-[#333333] p-1 px-6 rounded-lg border-white/30 border-[0.1px] cursor-pointer"
-                onClick={() => {
-                  setTempSettingsValues({
-                    model_visibility: true,
-                    smooth_scroll: true,
-                    scroll_snap: true,
-                  });
-                }}
-              >
-                PC
-              </div>
-            </div>
-          </div>
           <div className="uppercase text-xl">Settings</div>
-          <div className="flex justify-between w-full items-center px-2 pt-2">
-            <div className="text-red-500">3D Model(Experimental)</div>
-            <SlideButtons
-              tempSettingsValues={tempSettingsValues}
-              setTempSettingsValues={setTempSettingsValues}
-              idx={"model_visibility"}
-            />
-          </div>
           <div className="flex justify-between w-full items-center px-2 pt-4">
             <div>Smooth Scrolling</div>
             <SlideButtons

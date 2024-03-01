@@ -48,3 +48,19 @@
     10px 10px;
   color: white;
 }
+
+.image-zoom{
+  transition: .5s ease;
+}
+
+.image-cover{
+  visibility: hidden;
+}
+
+.image-zoom:hover{
+  transform: scale(1.2);
+}
+
+.image-zoom:hover > .image-cover{
+  visibility: visible;
+}

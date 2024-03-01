@@ -11,7 +11,7 @@ const Projects = ({ settingsValues }) => {
         <div className="text-5xl uppercase text-center my-6">Projects</div>
       )}
       <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-4 pt-8">
-        {ProjectsData.slice(0, 4).map(function (item, i) {
+        {ProjectsData.slice(0, 3).map(function (item, i) {
           return <ProjectCard key={i} ProjectData={item} />;
         })}
       </div>

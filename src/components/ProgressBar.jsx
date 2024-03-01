@@ -3,7 +3,7 @@ import { FcSettings } from "react-icons/fc";
 import Settings from "./Settings";
 
 const ProgressBar = ({ sectionNum, setOpenSettings, settingsValues }) => {
-  const arr = ["Home", "About", "Skills", "Experience"];
+  const arr = ["About", "Skills", "Experience"];
 
   const [activeModal, setActiveModal] = useState(false);
 
@@ -13,7 +13,7 @@ const ProgressBar = ({ sectionNum, setOpenSettings, settingsValues }) => {
         sectionNum === 0 || !settingsValues["scroll_snap"]
           ? "justify-end pr-10"
           : "justify-center"
-      }  ${sectionNum > 1 ? "bg-[#222222]" : "bg-[#333333]"}`}
+      }   bg-[#222222]`}
     >
       <div className="flex justify-center items-center lg:gap-10 gap-2">
         {settingsValues["scroll_snap"] && (
@@ -45,7 +45,7 @@ const ProgressBar = ({ sectionNum, setOpenSettings, settingsValues }) => {
             {sectionNum !== 0 && (
               <div
                 className={`${
-                  sectionNum === 5
+                  sectionNum === 4
                     ? "text-text lg:text-3xl text-base"
                     : "text-gray-500 lg:text-2xl text-sm"
                 } `}

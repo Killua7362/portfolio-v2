@@ -1,4 +1,3 @@
-import Model from "./Model";
 import Lenis from "@studio-freight/lenis";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
@@ -24,7 +23,6 @@ const BasePage = () => {
   const [openSettings, setOpenSettings] = useState(false);
   const [isRender, setIsRender] = useState(false);
   const [settingsValues, setSettingsValues] = useState({
-    model_visibility: true,
     smooth_scroll: true,
     scroll_snap: true,
   });
@@ -117,10 +115,6 @@ const BasePage = () => {
 
   return (
     <div className="h-full w-full" ref={root}>
-      <div className="fixed h-screen w-full z-10 ">
-        {settingsValues["model_visibility"] && <Model />}
-      </div>
-
       {isRender && (
         <Settings
           openSettings={openSettings}
@@ -141,22 +135,12 @@ const BasePage = () => {
         transition={{ duration: 1, type: "spring", bounce: 0.3, delay: 0.2 }}
       >
         <div
-          className={`text-3xl ml-8 lg:ml-32 lg:text-5xl z-0 min-h-screen relative justify-center items-center flex section-1 section text-text welcome-text`}
+          className={`text-3xl lg:text-5xl z-0 min-h-screen relative justify-center items-center flex section-1 section text-text welcome-text bg-[#222222]`}
           ref={welcome}
         >
           WELCOME
         </div>
       </motion.div>
-      <div
-        className={`text-2xl lg:text-6xl min-h-screen relative z-0 flex flex-col justify-end items-start pb-24 md:pb-4 pl-4 lg:pl-16 section-2 section`}
-      >
-        <div className="relative">
-          <div className="text-start text-text name-text">Akshay Bhat</div>
-          <div className="text-base lg:text-xl text-text/60 pt-1">
-            Full Stack Engineer | Machine Learning Engineer
-          </div>
-        </div>
-      </div>
       <div className="min-h-screen relative z-20 section w-full bg-[#222222] section-3 text-white flex flex-col justify-center ">
         <motion.div
           initial="hidden"

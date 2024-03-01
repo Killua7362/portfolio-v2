@@ -1,5 +1,6 @@
 import { FaGithub, FaLongArrowAltRight } from "react-icons/fa";
 import { motion } from "framer-motion";
+import './components.css'
 const ProjectCard = ({ ProjectData }) => {
   return (
     <motion.div
@@ -22,15 +23,27 @@ const ProjectCard = ({ ProjectData }) => {
             </div>
           )}
         </div>
-        <div className="text-text/80 text-base">{ProjectData.description}</div>
-        <div className="pt-4">
+        <div
+            className={`pt-4 relative ${ProjectData.img_src === ''?"":"image-zoom"}`}
+         >
           <img
             src={`projects/${
               ProjectData.img_src === "" ? "noimage.png" : ProjectData.img_src
             }`}
-            className="h-full w-full max-w-[350px] max-h-[200px] border-white/30 border-[0.1px]"
+            className={`h-full w-full max-w-[350px] max-h-[200px] border-white/30 border-[0.1px] rounded-lg ${ProjectData.img_src === ''?"":"image-zoom"}`}
           />
-          :
+          <div className="z-50 absolute flex flex-col justify-center items-center top-3 w-full h-full text-text image-frame image-cover rounded-md bg-[#0D1117]">
+            <div className="flex justify-around items-center w-10/12 h-5/6 flex-col p-1">
+              <div className="text-base">
+                {ProjectData.description}
+              </div>
+              {ProjectData.live !== "" &&
+               <a href={ProjectData.live} target="_blank" tabIndex={-1} className="text-sm hover:text-white text-white rounded-2xl bg-[#1C1C1F] p-2 px-4 border-white/30 border-[0.1px] cursor-pointer image-frame">
+                  Visit Website
+              </a>
+              }
+            </div>
+          </div>
         </div>
         <div className="flex justify-start pt-4">
           <a href={ProjectData.github_link} tabindex="-1" className="text-text">
