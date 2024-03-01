@@ -1,13 +1,11 @@
 import { Html } from "@react-three/drei";
 
 const Loading = () => {
-    return (
-        <Html>
-            <div>
+  return (
+    <Html>
+      <div></div>
+    </Html>
+  );
+};
 
-            </div>
-        </Html>
-      );
-}
- 
 export default Loading;

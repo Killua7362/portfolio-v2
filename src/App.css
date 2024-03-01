@@ -1,72 +1,74 @@
-.all-project-class-11{
-  transition:transform .3s ease-out;
+.all-project-class-11 {
+  transition: transform 0.3s ease-out;
 }
 
-.all-project-class-10:hover > .all-project-class-11{
-  transform:translate(-4px,0)
+.all-project-class-10:hover > .all-project-class-11 {
+  transform: translate(-4px, 0);
 }
 
-.all-project-class-01{
-  transition:transform .3s ease-out;
+.all-project-class-01 {
+  transition: transform 0.3s ease-out;
 }
 
-.all-project-class-00:hover > .all-project-class-01{
-  transform:translate(4px,0)
+.all-project-class-00:hover > .all-project-class-01 {
+  transform: translate(4px, 0);
 }
 
-.skills-container{
-    position: relative;
-    text-transform: uppercase;
-    text-shadow: -15px 5px 20px #5FB9D2;
-    color: black;
-    letter-spacing: -0.05em;
-    font-family: 'Anton', Arial, sans-serif;
-    user-select: none;
-    text-transform: uppercase;
-    font-size: 150px;
-    transition: all 0.25s ease-out;
+.skills-container {
+  position: relative;
+  text-transform: uppercase;
+  text-shadow: -15px 5px 20px #5fb9d2;
+  color: black;
+  letter-spacing: -0.05em;
+  font-family: "Anton", Arial, sans-serif;
+  user-select: none;
+  text-transform: uppercase;
+  font-size: 150px;
+  transition: all 0.25s ease-out;
 }
 
-.welcome-text{
+.welcome-text {
   color: #e0dfdc;
-    background-color: #333;
-    letter-spacing: .1em;
-    text-shadow: 
-      0 -1px 0 #fff, 
-      0 1px 0 #2e2e2e, 
-      0 2px 0 #2c2c2c, 
-      0 3px 0 #2a2a2a, 
-      0 4px 0 #282828, 
-      0 5px 0 #262626, 
-      0 6px 0 #242424, 
-      0 7px 0 #222, 
-      0 8px 0 #202020, 
-      0 9px 0 #1e1e1e, 
-      0 10px 0 #1c1c1c, 
-      0 11px 0 #1a1a1a, 
-      0 12px 0 #181818, 
-      0 13px 0 #161616, 
-      0 14px 0 #141414, 
-      0 15px 0 #121212, 
-      0 22px 30px rgba(0, 0, 0, 0.9);
+  background-color: #333;
+  letter-spacing: 0.1em;
+  text-shadow:
+    0 -1px 0 #fff,
+    0 1px 0 #2e2e2e,
+    0 2px 0 #2c2c2c,
+    0 3px 0 #2a2a2a,
+    0 4px 0 #282828,
+    0 5px 0 #262626,
+    0 6px 0 #242424,
+    0 7px 0 #222,
+    0 8px 0 #202020,
+    0 9px 0 #1e1e1e,
+    0 10px 0 #1c1c1c,
+    0 11px 0 #1a1a1a,
+    0 12px 0 #181818,
+    0 13px 0 #161616,
+    0 14px 0 #141414,
+    0 15px 0 #121212,
+    0 22px 30px rgba(0, 0, 0, 0.9);
 }
 
-.name-text{
-  text-shadow: 1px 1px 0 rgb(223, 227, 229), 4px 4px 0 rgba(0, 0, 0, 0.25);
+.name-text {
+  text-shadow:
+    1px 1px 0 rgb(223, 227, 229),
+    4px 4px 0 rgba(0, 0, 0, 0.25);
   color: #3f3f3f;
   font-family: Helvetica;
 }
 
-.about-me-text{
-    font-family: "Paytone One";
-    color: #202020;
-    text-transform: uppercase;
-    letter-spacing: -2px;
-    display: block;
-    margin: 11px 0 17px 0;
-    font-size: 80px;
-    line-height: 80px;
-    color: #e4f3fb;
-    /* text-shadow: 0 13.36px 8.896px #1A191A,0 -2px 1px black; */
-    letter-spacing: 2px;
+.about-me-text {
+  font-family: "Paytone One";
+  color: #202020;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  display: block;
+  margin: 11px 0 17px 0;
+  font-size: 80px;
+  line-height: 80px;
+  color: #e4f3fb;
+  /* text-shadow: 0 13.36px 8.896px #1A191A,0 -2px 1px black; */
+  letter-spacing: 2px;
 }
