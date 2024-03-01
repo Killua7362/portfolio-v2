@@ -6,9 +6,9 @@ import {motion} from 'framer-motion'
 
 const Projects = () => {
     return (
-        <div className="w-full lg:w-10/12 mx-auto text-text pt-4"
+        <div className="w-fit min-h-screen section section-6  mx-auto text-text pt-14"
         >
-        <motion.div className="text-4xl pb-6 pt-8 "
+        <motion.div className="font-bold text-4xl tracking-wide pb-6 pt-8 "
           initial='hidden'
           whileInView='visible'
           viewport={{once:false}}

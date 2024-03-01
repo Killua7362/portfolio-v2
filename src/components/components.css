@@ -1,0 +1,49 @@
+.string {
+}
+
+.name{
+  margin: 15px 0px;
+  padding: 14px;
+  position: relative;
+  animation: text-animation 10s infinite;
+}
+
+@keyframes text-animation {
+    0%,100%{
+  transform: translateY(-0.9rem);
+    }
+    25%,75%{
+  transform: translateY(-7rem);
+    }
+    50%{
+  transform: translateY(-13.1rem);
+    }
+
+  }
+
+.image-frame{
+    box-shadow:
+     rgba(0, 0, 0, 0.4) -5px 5px,
+    rgba(0, 0, 0, 0.3) -10px 10px,
+     rgba(0, 0, 0, 0.2) -15px 15px,
+      rgba(0, 0, 0, 0.1) -20px 20px,
+       rgba(0, 0, 0, 0.05) -25px 25px;
+}
+
+.resume-frame{
+  transition: 0.6s;
+}
+.resume-frame:hover{
+    box-shadow:
+    1px 1px,
+    2px 2px,
+    3px 3px,
+    4px 4px,
+    5px 5px,
+    6px 6px,
+    7px 7px,
+    8px 8px,
+    9px 9px,
+    10px 10px;
+    color:white;
+}

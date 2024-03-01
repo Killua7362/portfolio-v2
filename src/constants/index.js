@@ -124,25 +124,50 @@ const ProjectsData = [
     },
 ]
 
-const skills={
-    'Languages':['Java','Javascript','Python','Typescript','C++','C'],
-    'Libraries':['Pytorch','Tensorflow','Jax','Scikit-Learn','Pandas','Numpy','Matplotlib'],
-    'Front-End':[
-        'HTML',
-        'CSS',
-        'TAILWIND CSS',
-        'React.Js',
-        'Redux',
-        'Recoil',
-        'Next.js',
-        'Vite',
-	'GraphQL'
-],
-    'Backend':['Node.JS','Express','Flask'],
-    'Database':['MySQL','MongooDB','FireBase','Redis'],
-    'Testing':['Jenkins','Jest','python unittest','Selenium','Gatling'],
-    'Cloud':['Terraform','GCP','Ansible'],
-    'Tools':['Git','Linux','Docker','Vim', 'Postman']
-}
+const skills=[
+    {
+        "title":"Machine Learning",
+        "image_path":"icons/machinelearning.png",
+        "border_color":"red",
+        "tech_stack":['Pytorch','Tensorflow','Jax','Scikit-Learn','Pandas','Numpy','Matplotlib','Pyspark'],
+    },{
+        "title":"Web development",
+        "image_path":"icons/webdev.png",
+        "border_color":"blue",
+        "tech_stack":[
+            'React.Js',
+            'Next.js',
+            'TAILWIND CSS',
+            'Redux',
+            'Recoil',
+        'GraphQL',
+        'Node.JS','Express','Flask','Jest','Selenium','Gatling'
+    ],
+    }
+,
+{
+    "title":"Language",
+    "image_path":"icons/language.png",
+    "border_color":"yellow",
+    "tech_stack":['Java','Javascript','Python','Typescript','C++','C']
+},
+{
+    "title":"Tools",
+    "image_path":"icons/tools.png",
+    "border_color":"orange",
+    "tech_stack":['Git','Linux','Docker','Vim', 'Postman','Jenkins']
+},
+    {
+        "title":"Cloud and Database",
+        "image_path":"icons/cloud.png",
+        "border_color":"cyan",
+        "tech_stack":[
+            'Terraform','GCP','Ansible','MySQL','MongooDB','FireBase','Redis',
+        ]
+    }
+   
+
+]
+
 const aboutMe = 'Testing'
 export {experience,aboutMe,skills,ProjectsData};

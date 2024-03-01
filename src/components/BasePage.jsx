@@ -1,6 +1,4 @@
 import Model from "./Model";
-import NavBar from "./Navbar";
-import About from "./About";
 import Lenis from "@studio-freight/lenis";
 import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
@@ -11,19 +9,18 @@ import Projects from "./Projects";
 import { motion, useScroll, useSpring } from 'framer-motion'
 import { fadeIn } from "../utils";
 import resume from "../resume.pdf"
+import './components.css'
+import Linx from "./Linx";
+import Skills from "./Skills";
+import ProgressBar from "./ProgressBar";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const BasePage = () => {
 	const welcome = useRef();
 	const root = useRef();
 	const [ctx] = useState(gsap.context(() => { }, root));
-	const [debug, setDebug] = useState(true);
-	const { scrollYProgress } = useScroll()
-	const scaleX = useSpring(scrollYProgress, {
-		stiffness: 100,
-		damping: 30,
-		restDelta: 0.001
-	})
+	const [debug, setDebug] = useState(false);
+	const [sectionNum,setSectionNum] = useState(1);
 
 	const scrolling = {
 		enabled: true,
@@ -56,7 +53,8 @@ const BasePage = () => {
 		smoothTouch: false,
 	});
 
-	const goToSection = (section) => {
+	const goToSection = (section,i) => {
+		setSectionNum(i);
 		if (scrolling.enabled) {
 			// skip if a scroll tween is in progress
 			lenis.stop();
@@ -88,8 +86,8 @@ const BasePage = () => {
 					trigger: panel,
 					start: "top bottom-=1",
 					end: "bottom top+=1",
-					onEnter: () => goToSection(panel),
-					onEnterBack: () => goToSection(panel),
+					onEnter: () => goToSection(panel,i),
+					onEnterBack: () => goToSection(panel,i),
 				});
 			});
 		});
@@ -101,19 +99,20 @@ const BasePage = () => {
 			<div className="fixed h-screen w-full z-10 ">
 				<Model />
 			</div>
+			<ProgressBar sectionNum={sectionNum}/>
 			<motion.div
 				initial={{ y: -200, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ duration: 1, type: 'spring', bounce: 0.3, delay: 0.2 }}>
 				<div
-					className={`text-3xl ml-8 lg:ml-32 lg:text-5xl z-0 h-screen relative justify-center items-center flex section-1 section text-text welcome-text`}
+					className={`text-3xl ml-8 lg:ml-32 lg:text-5xl z-0 min-h-screen relative justify-center items-center flex section-1 section text-text welcome-text`}
 					ref={welcome}
 				>
 					WELCOME
 				</div>
 			</motion.div>
 
-			<div className="text-2xl lg:text-6xl h-screen relative z-0 flex flex-col justify-end items-start pb-24 md:pb-4 pl-4 pb-8 lg:pl-16 section-2 section"
+			<div className="text-2xl lg:text-6xl min-h-screen relative z-0 flex flex-col justify-end items-start pb-24 md:pb-4 pl-4 lg:pl-16 section-2 section"
 			>
 				<div className="relative">
 					<div className="text-start text-text name-text">Akshay Bhat</div>
@@ -122,39 +121,60 @@ const BasePage = () => {
 					</div>
 				</div>
 			</div>
-			<motion.div className="sticky w-full top-0 z-30 h-1 bg-[#ffff] origin-[0%]" style={{ scaleX: scaleX }} />
-			<div className="h-screen relative z-20 section w-9/12 section-3 text-white flex flex-col justify-center lg:ml-36 ">
-				<div className="ml-10 lg:ml-0">
-					<div className="text-2xl lg:tracking-[0.2rem] tracking-[0.2rem]">
-						Hi, My name is
+			<div className="min-h-screen relative z-20 section w-full bg-[#222222] section-3 text-white flex flex-col justify-center ">
+				<motion.div
+				 initial='hidden'
+				 whileInView='visible'
+				 viewport={{once:false}}
+				 transition={{duration:0.6,delay:0.1}}
+				 variants={{
+				   visible:{opacity:1,y:0},
+				   hidden:{opacity:0,y:50}
+				 }}
+				className="w-full flex flex-col lg:flex-row gap-y-20 lg:gap-y-0 justify-around relative items-center">
+					<div className="flex flex-col gap-y-4">
+						<div
+						 className="text-3xl lg:tracking-[0.1rem] tracking-[0.2rem] left-[15.5%]"
+						>
+							Hi, I am
+						</div>
+						<div className="overflow-hidden string relative flex flex-col h-[4.4rem] w-fit ">
+							<div className="text-4xl name bg-[#20a7d8]">
+								Akshay Bhat
+							</div>
+							<div className="text-4xl name bg-[#CD921E]">
+								Full Stack Engineer
+							</div>
+							<div className="text-4xl name bg-[#c10528]">
+								ML Engineer
+							</div>
+						</div>
+						<div className="flex space-x-6 justify-center lg:justify-normal lg:text-lg text-base">
+							<a
+							target = "_blank" href="mailto:bhat7362@gmail.com"
+							tabindex="-1"
+							 className="bg-[#8BC371] rounded-md uppercase w-[7.5rem] text-center align-middle p-2 resume-frame cursor-pointer text-white hover:text-white  font-sans leading-10">
+								Hire me
+							</a>
+							<a
+							target = "_blank" href={resume}
+							tabindex="-1"
+							 className="bg-[#8BC371] rounded-md w-[7.5rem] text-center align-middle p-2 resume-frame text-white font-sans leading-10 uppercase">
+									Resume
+							</a>
+						</div>
 					</div>
-					<div className="lg:text-7xl text-4xl lg:tracking-[1rem] tracking-[0.2rem] lg:pt-4">
-						Akshay Bhat
+					<div className="flex flex-col justify-center items-center">
+						<img src="killua.jpeg" height="270rem" width="270rem" className="image-frame mb-5"/>
+						<Linx/>
 					</div>
-				</div>
-				<div className="lg:w-9/12 w-10/12 lg:text-xl text-lg text-text/80 lg:tracking-widest pt-8 ml-10 lg:ml-0 ">
-					I am an enthusiastic and driven web developer with a strong interest in machine learning. As an undergraduate, I have developed a deep understanding of various programming languages and technologies, including Python and Javascript. My passion for technology and innovation has led me to explore the field of machine learning, where I am constantly learning new techniques to improve my projects. I am dedicated to delivering high-quality machine learning or web solutions that are not only functional but also user-friendly and visually appealing. With my strong technical skills and passion for innovation, I am confident in my ability to bring your vision to life.
-				</div>
-				<div className="flex pt-10 space-x-6 justify-center lg:justify-normal">
-					<div className="bg-[#242424] rounded-md text-xl outline outline-white outline-1 w-[8.5rem] text-center align-middle p-2">
-						<a target = "_blank" href="mailto:bhat7362@gmail.com" className="text-white">
-							Hire me
-						</a>
-					</div>
-					<div className="bg-[#242424] rounded-md text-xl outline outline-white outline-1  w-[8.5rem] p-2 text-center align-middle">
-						<a target = "_blank" href={resume} className="text-white">
-							My Resume
-						</a>
-					</div>
-				</div>
+				</motion.div>
 			</div>
 
-			<div className="text-2xl h-full relative z-20 section lg:w-7/12 bg-[#222222]">
-				<div className="w-screen lg:w-full h-full  p-10 pt-[10vh] pb-[60vh] flex flex-col">
-					<About />
+			<div className="w-screen min-h-screen relative z-20 p-10 pt-[10vh] pb-[60vh] flex flex-col items-center lg:backdrop-blur-sm lg:bg-inherit bg-[#222222]">
+					<Skills/>
 					<Experience />
 					<Projects />
-				</div>
 			</div>
 			<motion.div
 				initial={{ opacity: 0 }}

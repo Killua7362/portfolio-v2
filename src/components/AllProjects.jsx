@@ -90,7 +90,7 @@ const ProjectPage = () => {
 									})}
 								</div>
 								<div className="col-span-1 text-xl">
-									<a href={item.github_link}>
+									<a tabindex="-1" href={item.github_link} className="">
 										code
 									</a>
 								</div>

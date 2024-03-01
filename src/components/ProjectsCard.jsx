@@ -28,8 +28,8 @@ const ProjectCard= ({ProjectData}) => {
                     <img src={`projects/${ProjectData.img_src}`} className="h-full w-full max-w-[350px] max-h-[200px]"/>
                 </div>
                 <div className="flex justify-start pt-4">
-                    <a href={ProjectData.github_link} className="text-text">
-                        <FaGithub className='rounded-full text-3xl'/>
+                    <a href={ProjectData.github_link} tabindex="-1" className="text-text">
+                        <FaGithub className='rounded-full text-3xl hover:text-text text-text'/>
                     </a>
                     <div className="flex text-black justify-start pl-2 pr-2 gap-3 text-xs flex-wrap">
                         {ProjectData.tech_stack.map(function(item,i){
