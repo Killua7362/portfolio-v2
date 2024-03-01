@@ -25,7 +25,7 @@ const Settings  = ({openSettings,setOpenSettings,settingsValues,setSettingsValue
                         <div className="flex w-full justify-around my-3">
                             <div className="bg-[#333333] p-1 px-4 rounded-lg border-white/30 border-[0.1px] cursor-pointer" onClick={()=>{
                                 setTempSettingsValues({
-                                    "model_visibility":false,
+                                    "model_visibility":true,
                                     "smooth_scroll":true,
                                     "scroll_snap":false,
                                 })
@@ -34,7 +34,7 @@ const Settings  = ({openSettings,setOpenSettings,settingsValues,setSettingsValue
                             </div>
                             <div className="bg-[#333333] p-1 px-6 rounded-lg border-white/30 border-[0.1px] cursor-pointer" onClick={()=>{
                                 setTempSettingsValues({
-                                    "model_visibility":false,
+                                    "model_visibility":true,
                                     "smooth_scroll":true,
                                     "scroll_snap":true,
                                 })

@@ -24,7 +24,7 @@ const BasePage = () => {
 	const [openSettings,setOpenSettings] = useState(false);
 	const [isRender,setIsRender] = useState(false);
 	const [settingsValues,setSettingsValues] = useState({
-		"model_visibility":false,
+		"model_visibility":true,
 		"smooth_scroll":true,
 		"scroll_snap":true,
 	});
