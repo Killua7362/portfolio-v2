@@ -159,6 +159,9 @@ const Linx = () => {
           ></path>
         </svg>
       </a>
+      <a tabindex="-1" href="https://myanimelist.net/profile/Killua7362" className="text-text" target="_blank">
+        <img src="icons/anime.png" height={40} width={40}/>
+      </a>
     </div>
   );
 };

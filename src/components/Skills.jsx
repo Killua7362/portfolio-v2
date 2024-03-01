@@ -2,7 +2,7 @@ import { skills } from "../constants/index";
 
 const Skills = ({ settingsValues }) => {
   return (
-    <div className="w-screen text-text bg-[#222222] min-h-screen flex justify-center items-center section section-4 flex-col">
+    <div className="w-screen text-text bg-[#222222] min-h-screen flex justify-center items-center section section-4 flex-col pt-16 pb-32">
       {!settingsValues["scroll_snap"] && (
         <div className="text-5xl uppercase mb-8">Skills</div>
       )}
@@ -13,7 +13,7 @@ const Skills = ({ settingsValues }) => {
               <div
                 className={`flex flex-col justify-center items-center gap-y-4 pb-10 w-10/12 border-b-2 border-${ele.border_color}`}
               >
-                <div className="text-xl text-center lg:text-2xl uppercase leading-10 font-mono">
+                <div className="text-xl text-center lg:text-2xl uppercase leading-10 ">
                   {ele.title}
                 </div>
                 <img height={100} width={100} src={ele.image_path} />

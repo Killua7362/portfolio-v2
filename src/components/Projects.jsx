@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const Projects = ({ settingsValues }) => {
   return (
-    <div className="lg:w-10/12 w-full min-h-screen section section-6  mx-auto text-text pt-14">
+    <div className="lg:w-10/12 w-full min-h-screen section section-6  mx-auto text-text pt-24">
       {!settingsValues["scroll_snap"] && (
         <div className="text-5xl uppercase text-center my-6">Projects</div>
       )}

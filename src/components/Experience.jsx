@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 const Experience = ({ settingsValues }) => {
   return (
     <div
-      className={`w-screen min-h-screen flex flex-col items-center section section-5  ${!settingsValues["scroll_snap"] ? "pt-0" : "pt-24"}`}
+      className={`w-screen min-h-screen flex flex-col items-center section section-5  ${!settingsValues["scroll_snap"] ? "pt-0" : "pt-16"} pb-18`}
     >
       {!settingsValues["scroll_snap"] && (
         <div className="text-5xl uppercase mb-8 text-text">Experience</div>

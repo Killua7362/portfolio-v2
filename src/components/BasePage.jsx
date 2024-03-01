@@ -151,7 +151,7 @@ const BasePage = () => {
             visible: { opacity: 1, y: 0 },
             hidden: { opacity: 0, y: 50 },
           }}
-          className="w-full flex flex-col lg:flex-row gap-y-20 lg:gap-y-0 justify-around relative items-center"
+          className="w-full flex flex-col-reverse lg:flex-row gap-y-20 lg:gap-y-0 justify-around relative items-center"
         >
           <div className="flex flex-col gap-y-4">
             <div className="text-3xl lg:tracking-[0.1rem] tracking-[0.2rem] left-[15.5%]">
@@ -169,7 +169,7 @@ const BasePage = () => {
                 target="_blank"
                 href="mailto:bhat7362@gmail.com"
                 tabindex="-1"
-                className="bg-[#8BC371] rounded-md uppercase w-[7.5rem] text-center align-middle p-2 resume-frame cursor-pointer text-white hover:text-white  font-sans leading-10"
+                className="bg-[#8BC371] rounded-md uppercase w-[7.5rem] text-center align-middle p-2 resume-frame cursor-pointer text-white hover:text-white  leading-10"
               >
                 Hire me
               </a>
