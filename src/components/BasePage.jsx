@@ -175,7 +175,7 @@ const BasePage = () => {
               </a>
               <a
                 target="_blank"
-                href={resume}
+                href="https://resume-website-taupe-nine.vercel.app/"
                 tabindex="-1"
                 className="bg-[#8BC371] rounded-md w-[7.5rem] text-center align-middle p-2 resume-frame text-white font-sans leading-10 uppercase"
               >
