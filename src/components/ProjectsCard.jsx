@@ -4,7 +4,7 @@ import './components.css'
 const ProjectCard = ({ ProjectData }) => {
   return (
     <motion.div
-      className="relative text-base p-4 bg-[#1C1C1F] px-8 rounded-xl w-5/6 border-white/30 border-[0.01px]"
+      className="relative text-base p-4 bg-[#1C1C1F] px-8 rounded-xl lg:w-5/6 w-fit border-white/30 border-[0.01px]"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false }}

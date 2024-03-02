@@ -10,7 +10,7 @@ const Projects = ({ settingsValues }) => {
       {!settingsValues["scroll_snap"] && (
         <div className="text-5xl uppercase text-center my-6">Projects</div>
       )}
-      <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-4 pt-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full gap-4 pt-8">
         {ProjectsData.slice(0, 3).map(function (item, i) {
           return <ProjectCard key={i} ProjectData={item} />;
         })}
