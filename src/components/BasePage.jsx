@@ -195,7 +195,7 @@ const BasePage = () => {
         </motion.div>
       </div>
 
-      <div className="w-screen min-h-screen relative z-20 p-10 pt-[10vh] pb-[60vh] flex flex-col items-center bg-[#222222]">
+      <div className="w-screen min-h-screen relative z-20 p-10 pt-[10vh] pb-[5vh] flex flex-col items-center bg-[#222222]">
         <Skills settingsValues={settingsValues} />
         <Experience settingsValues={settingsValues} />
         <Projects settingsValues={settingsValues} />

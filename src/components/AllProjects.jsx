@@ -1,97 +1,53 @@
-import { FaLongArrowAltLeft } from "react-icons/fa";
 import NavBar from "./Navbar";
 import { ProjectsData } from "../constants";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-
-const apiToken = "";
+import { FaGithub} from "react-icons/fa";
 
 const ProjectPage = () => {
-  const [lastDate, setLastDate] = useState({});
-
-  useEffect(() => {
-    const savedLastDate = JSON.parse(localStorage.getItem("dates"));
-    const redis_token = "";
-
-    ProjectsData.map((ele, i) => {
-      const repo_name = ele.github_link.split("https://github.com/")[1];
-      if (
-        savedLastDate == null ||
-        !savedLastDate.has(repo_name) ||
-        savedLastDate.get(repo_name).get(time_stamp) > 691200000
-      ) {
-      }
-    });
-
-    const fetchDate = async (repo_name) => {
-      try {
-        const response = await fetch(
-          `https://api.github.com/repos/${repo_name}commits`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${apiToken}`,
-            },
-          },
-        )
-          .then((res) => res.json())
-          .then((res) => console.log(res));
-        //last commit date
-        //res[0].commit.author.date
-      } catch (error) {
-        console.log(error);
-      }
-    };
-  }, []);
-
   return (
-    <div className="h-full w-screen bg-background text-text" data-lenis-prevent>
+    <div className="h-full pb-10 w-screen bg-background text-text" data-lenis-prevent>
       <NavBar />
-      <div className="w-6/12 h-full mx-auto relative z-30">
-        <Link to={-1}>
-          <div
-            className="flex gap-x-2 text-text items-center pt-10 all-project-class-10"
-            onMouseEnter={(e) => {}}
-          >
-            <FaLongArrowAltLeft className="all-project-class-11" />
-            Return
-          </div>
-        </Link>
-        <div className="text-5xl pt-10 border-solid border-b-2 border-text/20 pb-6">
+      <div className="w-11/12 sm:w-10/12 lg:w-8/12 2xl:w-6/12 h-full mx-auto relative z-30">
+        <div className="text-3xl sm:text-5xl pt-10 border-solid border-b-2 border-text/20 pb-6">
           ALL PROJECTS
         </div>
-        <div className="grid grid-cols-12 mt-4 gap-x-8 gap-y-6">
-          <div className="col-span-1 text-xl"></div>
-          <div className="col-span-2 text-xl">Project Name</div>
-          <div className="col-span-4 text-xl">Description</div>
-          <div className="col-span-4 text-xl">Technologies</div>
-          <div className="col-span-1 text-xl mb-4">links</div>
-          {ProjectsData.map(function (item, index) {
-            return (
-              <>
-                <div className="col-span-1 text-lg">{index + 1}</div>
-                <div className="col-span-2 text-lg text-start">{item.name}</div>
-                <div className="col-span-4 text-lg text-start">
-                  {item.description}
-                </div>
-                <div className="col-span-4 text-base flex text-start flex-wrap gap-2">
-                  {item.tech_stack.map(function (i, j) {
-                    return (
-                      <div className=" bg-[#35a9e3] rounded-2xl px-2 max-h-6 text-xs py-1 text-center whitespace-nowrap">
-                        {i}
+        <div className="mt-6 flex flex-col gap-y-4">
+          {
+            ProjectsData.map((ele,idx)=>{
+              return(
+                  <div className="bg-[#1C1C1F] border-white/30 border-[0.1px] p-6 px-10 gap-y-2 rounded-2xl flex flex-col sm:items-start items-center">
+                  <div className={`text-xs p-1 rounded-xl text-white w-fit bg-[${ele.tag === "ML"?"#C10528":ele.tag === "WEB"?"#CD921E":"#20A7D8"}]`}>
+                    {ele.tag}
+                  </div>
+                  <div className="flex justify-between w-full items-center flex-col gap-y-3 sm:flex-row sm:gap-y-0">
+                    <div className="text-3xl font-semibold ">
+                      <div>
+                        {ele.name}
                       </div>
-                    );
-                  })}
-                </div>
-                <div className="col-span-1 text-xl">
-                  <a tabindex="-1" href={item.github_link} className="">
+                    </div>
+                    <div className="flex gap-x-2 text-xs flex-wrap gap-y-2">
+                      {
+                        ele.tech_stack.map((e,i)=>{
+                          return(
+                            <div className=" bg-[#222222] text-text rounded-2xl px-2 py-1 text-center whitespace-nowrap border-white/30 border-[0.1px]">
+                              {e}
+                            </div>
+                          )
+                        })
+                      }
+                    </div>
+                  </div>
+                  <div className="text-xl text-text/80">
+                    {ele.description}
+                  </div>
+                  <a className="flex gap-x-2 items-center text-white hover:text-white/80" target="_blank" tabIndex={-1} href={ele.github_link}>
+                    <FaGithub size={20}/>
                     code
                   </a>
                 </div>
-                <div className="h-full w-full col-span-12 border-b-2 border-text/20 border-solid" />
-              </>
-            );
-          })}
+              )
+            })
+          }
+
         </div>
       </div>
     </div>
@@ -99,3 +55,5 @@ const ProjectPage = () => {
 };
 
 export default ProjectPage;
+
+//

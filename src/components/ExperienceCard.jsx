@@ -28,14 +28,13 @@ const ExperienceCard = ({ experience }) => {
         <h3 className="text-[1.2rem] lg:text-[1.7rem] font-bold uppercase">
           {experience.title}
         </h3>
-        <div
-          className={`flex items-center gap-x-2 text-[1.1rem] text-${experience.company_color}`}
+        <a
+          className={`text-white hover:text-white/70 flex items-center gap-x-2 text-[1.1rem] text-${experience.company_color}`}
+          target="_blank" href={experience.company_site} tabindex="-1"
         >
           {experience.company_name}
-          <a target="_blank" href={experience.company_site} tabindex="-1">
-            <FcLink />
-          </a>
-        </div>
+          <FcLink />
+        </a>
         <ul className="list-disc pl-4 pt-1 ">
           {experience.points.map((point, index) => {
             return <li className="text-[1.1rem] tracking-wider">{point}</li>;

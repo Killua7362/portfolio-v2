@@ -7,6 +7,9 @@ export default {
     "border-yellow-300",
     "border-orange-300",
     "border-cyan-300",
+    "bg-[#CD921E]",
+    "bg-[#C10528]",
+    "bg-[#20A7D8]"
   ],
   theme: {
     extend: {

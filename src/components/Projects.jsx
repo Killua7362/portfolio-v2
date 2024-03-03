@@ -18,7 +18,7 @@ const Projects = ({ settingsValues }) => {
       <div className="text-lg my-8 w-fit">
         <Link
           to="projects"
-          className="flex text-text all-project-class-00 items-center visited:text-text"
+          className="flex text-text all-project-class-00 items-center visited:text-text hover:text-text/70"
         >
           View All Projects
           <FaLongArrowAltRight className="mt-1 ml-1 all-project-class-01" />

@@ -42,7 +42,7 @@ const NavBar = () => {
                 e.currentTarget.style.backgroundColor = "#FFCE56";
               }}
             >
-              <a target="_blank" href={resume} className="text-white">
+              <a target="_blank" href="https://resume-website-taupe-nine.vercel.app/" className="text-white">
                 Resume
               </a>
             </div>

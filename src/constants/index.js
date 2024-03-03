@@ -34,8 +34,8 @@ const ProjectsData = [
     img_src: "portfolio.png",
     github_link: "https://github.com/Killua7362/portfolio-v2/",
     tech_stack: ["ReactJS", "Three JS", "TailwindCss", "GSAP", "Lenis"],
-    live: "",
-  },
+    live: "", tag: "WEB"
+   },
   {
     name: "Small",
     description: "blogging website similar to medium but smaller",
@@ -50,15 +50,15 @@ const ProjectsData = [
       "zod",
       "recoil",
     ],
-    live: "",
-  },
+    live: "", tag: "WEB"
+   },
   {
     name: "gptforme",
     description: "chatgpt which uses my custom neural network library",
     img_src: "gptforme.png",
     github_link: "https://github.com/Killua7362/gptforme/",
     tech_stack: ["ReactJS", "Flask", "TailwindCss", "clerk", "redis", "redux"],
-    live: "",
+    live: "", tag: "ML/WEB"
   },
   {
     name: "clowder",
@@ -66,7 +66,7 @@ const ProjectsData = [
     img_src: "",
     github_link: "https://github.com/Killua7362/clowder/",
     tech_stack: ["Terraform", "GKE", "GCP", "Ansible", "Jenkins"],
-    live: "",
+    live: "", tag: "WEB"
   },
   {
     name: "MicroNet",
@@ -74,7 +74,7 @@ const ProjectsData = [
     img_src: "",
     github_link: "https://github.com/Killua7362/MicroNet/",
     tech_stack: ["Numpy", "Cupy"],
-    live: "",
+    live: "", tag: "ML"
   },
   {
     name: "black grimore",
@@ -82,7 +82,7 @@ const ProjectsData = [
     img_src: "",
     github_link: "https://github.com/Killua7362/black-grimoire/",
     tech_stack: ["Nextjs"],
-    live: "",
+    live: "", tag: "WEB"
   },
   {
     name: "diffusion",
@@ -90,8 +90,8 @@ const ProjectsData = [
     img_src: "",
     github_link: "https://github.com/Killua7362/diffusion/",
     tech_stack: ["torch"],
-    live: "",
-  },
+    live: "", tag: "ML"
+   },
   {
     name: "animefusion",
     description:
@@ -99,15 +99,15 @@ const ProjectsData = [
     img_src: "",
     github_link: "https://github.com/Killua7362/animefusion/",
     tech_stack: ["torch"],
-    live: "",
-  },
+    live: "", tag: "ML"
+   },
   {
     name: "vqgan",
     description: "vqgan from scratch",
     img_src: "",
     github_link: "https://github.com/Killua7362/vqgan/",
     tech_stack: ["torch"],
-    live: "",
+    live: "", tag: "ML"
   },
   {
     name: "deduper",
@@ -115,24 +115,24 @@ const ProjectsData = [
     img_src: "gptforme.png",
     github_link: "https://github.com/Killua7362/deduper/",
     tech_stack: ["sklearn", "xgboost"],
-    live: "",
-  },
+    live: "", tag: "ML"
+   },
   {
     name: "picogpt",
     description: "character level gpt model from scratch",
     img_src: "",
     github_link: "https://github.com/Killua7362/picogpt/",
     tech_stack: ["numpy"],
-    live: "",
-  },
+    live: "", tag: "ML"
+   },
   {
     name: "otakuflix",
     description: "anime streaming app",
     img_src: "gptforme.png",
     github_link: "https://github.com/Killua7362/otakuflix/",
     tech_stack: ["Nextjs"],
-    live: "",
-  },
+    live: "", tag: "WEB"
+   },
 ];
 
 const skills = [
