@@ -55,10 +55,15 @@ const ProgressBar = ({ sectionNum, setOpenSettings, settingsValues }) => {
             )}
           </>
         )}
-        <FcSettings
-          className="lg:text-3xl text-base cursor-pointer"
-          onClick={() => setOpenSettings(true)}
-        />
+        <div className="flex text-text items-center gap-x-4">
+          {(!settingsValues["scroll_snap"] || sectionNum == 0) && <span className="text-xl font-semibold uppercase">
+            Killua's Den
+          </span>}
+          <FcSettings
+            className="lg:text-3xl text-base cursor-pointer"
+            onClick={() => setOpenSettings(true)}
+          />
+        </div>
       </div>
     </div>
   );

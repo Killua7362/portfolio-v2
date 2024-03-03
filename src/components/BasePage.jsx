@@ -135,10 +135,12 @@ const BasePage = () => {
         transition={{ duration: 1, type: "spring", bounce: 0.3, delay: 0.2 }}
       >
         <div
-          className={`text-3xl lg:text-5xl z-0 min-h-screen relative justify-center items-center flex section-1 section text-text welcome-text bg-[#222222]`}
+          className={`text-3xl lg:text-5xl z-0 min-h-screen relative justify-center items-center flex section-1 section text-text welcome-text bg-[#222222] uppercase flex-col gap-y-5`}
           ref={welcome}
         >
-          WELCOME
+          <span>
+            WELCOME
+          </span>
         </div>
       </motion.div>
       <div className="min-h-screen relative z-20 section w-full bg-[#222222] section-3 text-white flex flex-col justify-center ">
