@@ -9,7 +9,7 @@ import ScrollToTop from "./components/ScrollToTop";
 const App = () => {
   return (
     <div>
-      <BrowserRouter>
+      <BrowserRouter forceRefresh={true}>
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<BasePage />} />

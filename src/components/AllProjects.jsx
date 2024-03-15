@@ -85,7 +85,7 @@ const ProjectPage = () => {
 	}, [])
 
 	return isRendered && (
-		<div className={`h-full pb-10 w-screen bg-background text-text ${filterActive ? "fixed" : ""}`} data-lenis-prevent>
+		<div className={`h-full pb-10 w-screen bg-background text-text section ${filterActive ? "fixed" : ""}`}>
 			<NavBar />
 			{filterActive && <Filter finalFilter={finalFilter} setFinalFilter={setFinalFilter} setFilterActive={setFilterActive} />}
 			<div className="w-11/12 sm:w-10/12 lg:w-8/12 2xl:w-6/12 h-full mx-auto relative z-30">
